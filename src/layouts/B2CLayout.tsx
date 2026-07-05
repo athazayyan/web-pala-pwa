@@ -1,10 +1,13 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function B2CLayout() {
   const location = useLocation()
   const { user, isLoggedIn, logout } = useAuth()
   const navigate = useNavigate()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const getLinkClass = (path: string) => {
     const base = "font-label-caps text-label-caps transition-colors "
@@ -74,9 +77,15 @@ export function B2CLayout() {
             </>
           )}
 
-          {/* Mobile */}
-          <button className="md:hidden text-primary hover:text-tertiary transition-all active:scale-95">
-            <span className="material-symbols-outlined">account_circle</span>
+          {/* Mobile Menu Toggle */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-primary hover:text-tertiary transition-all active:scale-95 focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <span className="material-symbols-outlined text-2xl">
+              {mobileMenuOpen ? "close" : "menu"}
+            </span>
           </button>
         </div>
       </nav>
@@ -129,6 +138,137 @@ export function B2CLayout() {
           <p className="mt-8 font-body-sm text-on-primary/40">© 2026 PalaMart. Dari Nusantara untuk Dunia.</p>
         </div>
       </footer>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            />
+
+            {/* Drawer Sheet */}
+            <motion.aside
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
+              className="fixed right-0 top-0 bottom-0 w-72 bg-surface text-on-surface shadow-2xl z-50 md:hidden flex flex-col border-l border-outline-variant/30"
+            >
+              {/* Header inside drawer */}
+              <div className="flex justify-between items-center p-6 border-b border-outline-variant/20">
+                <span className="font-display-b2c text-xl text-primary font-bold">PalaMart</span>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-on-surface hover:text-primary transition-all active:scale-95 flex items-center"
+                >
+                  <span className="material-symbols-outlined text-2xl">close</span>
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex-1 px-6 py-8 flex flex-col gap-6">
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`font-label-caps text-[15px] tracking-wide py-2 border-b border-outline-variant/10 ${
+                    location.pathname === "/" ? "text-primary font-bold" : "text-on-surface-variant"
+                  }`}
+                >
+                  Beranda
+                </Link>
+                <Link
+                  to="/services"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`font-label-caps text-[15px] tracking-wide py-2 border-b border-outline-variant/10 ${
+                    location.pathname === "/services" ? "text-primary font-bold" : "text-on-surface-variant"
+                  }`}
+                >
+                  Marketplace
+                </Link>
+                <Link
+                  to="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`font-label-caps text-[15px] tracking-wide py-2 border-b border-outline-variant/10 ${
+                    location.pathname === "/about" ? "text-primary font-bold" : "text-on-surface-variant"
+                  }`}
+                >
+                  Dampak
+                </Link>
+              </div>
+
+              {/* Auth actions at bottom of drawer */}
+              <div className="p-6 border-t border-outline-variant/20 bg-surface-container-lowest">
+                {isLoggedIn ? (
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-3 bg-surface-container-low p-3 rounded-lg border border-outline-variant/30">
+                      <div className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold">
+                        {user?.avatar}
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-label-caps text-xs font-semibold text-on-surface truncate">{user?.nama}</span>
+                        <span className="text-[10px] text-on-surface-variant truncate">{user?.email}</span>
+                      </div>
+                    </div>
+                    {user?.role === "penjual" && (
+                      <Link
+                        to="/penjual/barang"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center justify-center gap-1.5 font-label-caps text-xs bg-secondary text-on-secondary py-2.5 rounded-lg hover:opacity-90 transition-all font-semibold"
+                      >
+                        <span className="material-symbols-outlined text-sm">storefront</span>
+                        Dashboard Penjual
+                      </Link>
+                    )}
+                    {user?.role === "admin" && (
+                      <Link
+                        to="/b2b"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center justify-center gap-1.5 font-label-caps text-xs bg-secondary text-on-secondary py-2.5 rounded-lg hover:opacity-90 transition-all font-semibold"
+                      >
+                        <span className="material-symbols-outlined text-sm">admin_panel_settings</span>
+                        Dashboard Admin
+                      </Link>
+                    )}
+                    <button
+                      onClick={() => {
+                        handleLogout()
+                        setMobileMenuOpen(false)
+                      }}
+                      className="flex items-center justify-center gap-1.5 font-label-caps text-xs text-error border border-error/30 py-2.5 rounded-lg hover:bg-error/5 transition-all w-full"
+                    >
+                      <span className="material-symbols-outlined text-sm">logout</span>
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-3">
+                    <Link
+                      to="/login"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex justify-center items-center font-label-caps text-label-caps text-primary border border-primary/40 py-2.5 rounded-lg hover:bg-primary hover:text-white transition-all text-xs font-semibold"
+                    >
+                      Masuk
+                    </Link>
+                    <Link
+                      to="/register"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex justify-center items-center font-label-caps text-label-caps bg-primary text-on-primary py-2.5 rounded-lg hover:opacity-90 transition-all text-xs font-semibold"
+                    >
+                      Daftar
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
