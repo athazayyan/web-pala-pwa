@@ -40,7 +40,7 @@ export function Jejak() {
             className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#1b6d24] text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-2xl font-mono text-sm border border-white/20"
           >
             <Check className="w-4 h-4" />
-            <span>{addedProduct} added to cart!</span>
+            <span>{addedProduct} ditambahkan ke keranjang!</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -57,11 +57,11 @@ export function Jejak() {
         
         <div className="relative z-10 text-center text-white px-margin-mobile">
           <span className="font-label-caps text-label-caps tracking-[0.2em] mb-4 block uppercase opacity-85 text-tertiary-fixed">
-            The Spirit of Tapaktuan
+            Warisan Rempah Nusantara
           </span>
           <h1 className="font-display-b2c text-display-b2c md:text-7xl mb-6">Jejak Rempah</h1>
           <p className="font-body-md text-lg md:text-xl max-w-2xl mx-auto opacity-90">
-            An odyssey of heritage and precision. Witness the journey from the volcanic soils of South Aceh to the global apothecary.
+            Perjalanan warisan dan presisi. Saksikan perjalanan dari tanah vulkanik Nusantara hingga apoteker global.
           </p>
           <div className="mt-12 animate-bounce flex justify-center">
             <span className="material-symbols-outlined text-4xl text-tertiary-fixed">keyboard_double_arrow_down</span>
@@ -73,17 +73,17 @@ export function Jejak() {
       <section className="py-32 px-6 md:px-margin-desktop bg-surface-container-low overflow-hidden rounded-xl">
         <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
           <div className="space-y-6">
-            <span className="font-label-caps text-label-caps text-tertiary mb-4 block">Chapter 01</span>
+            <span className="font-label-caps text-label-caps text-tertiary mb-4 block">Bab 01</span>
             <h2 className="font-display-b2c text-4xl text-primary leading-tight">
-              Nurtured by the Soil of Aceh Selatan
+              Dirawat oleh Tanah Subur Nusantara
             </h2>
             <p className="font-body-md text-on-surface-variant leading-relaxed">
-              In the shadow of the Barisan Mountains, our nutmeg trees thrive in mineral-rich volcanic soil. This "Technological Terroir" combines generational wisdom with real-time soil moisture monitoring.
+              Di antara pegunungan dan kepulauan Indonesia, pohon pala kami tumbuh subur di tanah vulkanik kaya mineral. "Terroir Teknologi" ini menggabungkan kearifan turun-temurun dengan pemantauan kelembaban tanah secara real-time.
             </p>
             <div className="flex items-center gap-4 py-4 border-l-4 border-secondary pl-6 bg-[#fbf9f5]/50 rounded-r-md">
               <span className="material-symbols-outlined text-secondary text-3xl">eco</span>
               <div>
-                <p className="font-label-caps text-label-caps text-secondary">SUSTAINABILITY GRADE</p>
+                <p className="font-label-caps text-label-caps text-secondary">GRADE KEBERLANJUTAN</p>
                 <p className="font-display-b2c text-2xl font-bold text-primary">A+ Premium</p>
               </div>
             </div>
@@ -99,7 +99,7 @@ export function Jejak() {
             </div>
             <div className="absolute -bottom-8 -left-8 glass-panel p-8 rounded-xl shadow-lg max-w-xs">
               <p className="font-data-mono text-xs text-primary/60 mb-2">GPS: 3.2573° N, 97.2081° E</p>
-              <p className="font-body-sm text-on-surface">Harvested at peak maturity by local guardians of the grove.</p>
+              <p className="font-body-sm text-on-surface">Dipanen pada kematangan puncak oleh para penjaga kebun lokal.</p>
             </div>
           </div>
         </div>
@@ -110,25 +110,25 @@ export function Jejak() {
         <div className="h-full w-full flex flex-col md:flex-row items-center justify-between px-6 md:px-margin-desktop py-24 gap-12 z-10 relative">
           <div className="w-full md:w-1/2 space-y-8">
             <div>
-              <span className="font-label-caps text-label-caps text-tertiary-fixed mb-4 block">Chapter 02</span>
-              <h2 className="font-display-b2c text-4xl text-surface">The Alchemy of Steam</h2>
+              <span className="font-label-caps text-label-caps text-tertiary-fixed mb-4 block">Bab 02</span>
+              <h2 className="font-display-b2c text-4xl text-surface">Alkimia Uap</h2>
             </div>
             <div className="space-y-12">
               <div className="flex gap-6 items-start">
                 <span className="font-data-mono text-tertiary-fixed text-2xl">01</span>
                 <div>
-                  <h3 className="font-display-b2c text-xl mb-2 text-surface">Gentle Extraction</h3>
+                  <h3 className="font-display-b2c text-xl mb-2 text-surface">Ekstraksi Lembut</h3>
                   <p className="text-on-primary/70 text-sm leading-relaxed">
-                    Using low-pressure steam distillation to preserve the volatile myristicin compounds that define our quality.
+                    Menggunakan distilasi uap bertekanan rendah untuk menjaga senyawa myristicin volatil yang mendefinisikan kualitas kami.
                   </p>
                 </div>
               </div>
               <div className="flex gap-6 items-start">
                 <span className="font-data-mono text-tertiary-fixed text-2xl">02</span>
                 <div>
-                  <h3 className="font-display-b2c text-xl mb-2 text-surface">Precision Filtration</h3>
+                  <h3 className="font-display-b2c text-xl mb-2 text-surface">Filtrasi Presisi</h3>
                   <p className="text-on-primary/70 text-sm leading-relaxed">
-                    A three-stage refinement process ensuring pharmaceutical-grade purity for industrial applications.
+                    Proses pemurnian tiga tahap memastikan kemurnian grade farmasi untuk aplikasi industri.
                   </p>
                 </div>
               </div>
@@ -153,10 +153,10 @@ export function Jejak() {
       {/* Chapter 3: Traceability Code Section */}
       <section className="py-32 px-6 md:px-margin-desktop bg-surface relative overflow-hidden rounded-xl">
         <div className="max-w-container-max mx-auto text-center mb-24 space-y-4">
-          <span className="font-label-caps text-label-caps text-tertiary mb-4 block">Chapter 03</span>
-          <h2 className="font-display-b2c text-4xl text-primary">From Seed to Shore</h2>
+          <span className="font-label-caps text-label-caps text-tertiary mb-4 block">Bab 03</span>
+          <h2 className="font-display-b2c text-4xl text-primary">Dari Benih ke Lautan</h2>
           <p className="max-w-xl mx-auto text-on-surface-variant text-sm">
-            Every batch carries its own digital passport. Scan to unlock the story of its origin.
+            Setiap batch membawa paspor digitalnya sendiri. Pindai untuk mengungkap kisah asal-usulnya.
           </p>
         </div>
 
@@ -171,30 +171,30 @@ export function Jejak() {
               />
               <div>
                 <h4 className="font-display-b2c text-lg text-primary">Bapak Syahrul</h4>
-                <p className="font-label-caps text-label-caps opacity-60 text-on-surface-variant">3rd Generation Grower</p>
+                <p className="font-label-caps text-label-caps opacity-60 text-on-surface-variant">Petani Generasi Ke-3</p>
               </div>
             </div>
             
             <div className="space-y-4 mb-8">
               <div className="flex justify-between border-b border-outline-variant/20 pb-2">
-                <span className="font-body-sm opacity-60">Grove Location</span>
-                <span className="font-body-sm font-semibold">Sawang, South Aceh</span>
+                <span className="font-body-sm opacity-60">Lokasi Kebun</span>
+                <span className="font-body-sm font-semibold">Banda Aceh, Indonesia</span>
               </div>
               <div className="flex justify-between border-b border-outline-variant/20 pb-2">
-                <span className="font-body-sm opacity-60">Harvest Date</span>
-                <span className="font-body-sm font-semibold">Oct 12, 2024</span>
+                <span className="font-body-sm opacity-60">Tanggal Panen</span>
+                <span className="font-body-sm font-semibold">12 Okt, 2024</span>
               </div>
               <div className="flex justify-between border-b border-outline-variant/20 pb-2">
-                <span className="font-body-sm opacity-60">Purity Grade</span>
-                <span className="font-body-sm font-semibold text-secondary">ABCD Grade</span>
+                <span className="font-body-sm opacity-60">Grade Kemurnian</span>
+                <span className="font-body-sm font-semibold text-secondary">Grade ABCD</span>
               </div>
             </div>
             
             <button 
               onClick={() => setShowGroveModal(true)}
-              className="w-full py-3 bg-primary text-white rounded-lg font-label-caps text-label-caps hover:bg-primary-container active:scale-95 transition-all"
+              className="w-full py-3 bg-primary text-white rounded-lg font-label-caps text-label-caps hover:bg-primary-container active:scale-95 transition-all text-sm"
             >
-              View Grove Reports
+              Lihat Laporan Kebun
             </button>
           </div>
 
@@ -208,15 +208,15 @@ export function Jejak() {
                 ))}
               </div>
               <div className="absolute inset-0 bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-xs font-mono font-bold bg-white text-primary px-2.5 py-1 rounded shadow">RANDOMIZE</span>
+                <span className="text-xs font-mono font-bold bg-white text-primary px-2.5 py-1 rounded shadow">ACAK</span>
               </div>
             </div>
             <span className="font-data-mono text-xs mb-2 text-primary">{batchId}</span>
             <button 
               onClick={() => setShowQRModal(true)}
-              className="font-label-caps text-center px-8 text-secondary hover:underline cursor-pointer tracking-wider text-xs"
+              className="font-label-caps text-center px-8 text-secondary hover:underline cursor-pointer tracking-wider text-[10px]"
             >
-              SCAN TO UNLOCK B2B DATA PORTAL
+              PINDAI UNTUK BUKA PORTAL DATA B2B
             </button>
           </div>
 
@@ -224,18 +224,18 @@ export function Jejak() {
           <div className="space-y-6">
             <div className="relative pl-12 before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-[-24px] before:w-[2px] before:bg-secondary">
               <span className="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-xs">01</span>
-              <h5 className="font-display-b2c font-bold text-primary">Cultivation</h5>
-              <p className="text-sm text-on-surface-variant">Shade-grown under rainforest canopy in Tapaktuan.</p>
+              <h5 className="font-display-b2c font-bold text-primary">Budidaya</h5>
+              <p className="text-sm text-on-surface-variant">Ditanam di bawah kanopi hutan hujan tropis Nusantara.</p>
             </div>
             <div className="relative pl-12 before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-[-24px] before:w-[2px] before:bg-secondary">
               <span className="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-xs">02</span>
-              <h5 className="font-display-b2c font-bold text-primary">Extraction</h5>
-              <p className="text-sm text-on-surface-variant">Processed at the Athesa Hub within 24 hours of harvest.</p>
+              <h5 className="font-display-b2c font-bold text-primary">Ekstraksi</h5>
+              <p className="text-sm text-on-surface-variant">Diproses di Hub Athesa dalam 24 jam setelah panen.</p>
             </div>
             <div className="relative pl-12">
               <span className="absolute left-0 top-0 w-8 h-8 rounded-full bg-tertiary text-white flex items-center justify-center font-bold text-xs">03</span>
-              <h5 className="font-display-b2c font-bold text-primary">Global Export</h5>
-              <p className="text-sm text-on-surface-variant">Sealed and dispatched via the Port of Tapaktuan.</p>
+              <h5 className="font-display-b2c font-bold text-primary">Ekspor Global</h5>
+              <p className="text-sm text-on-surface-variant">Disegel dan dikirim melalui pelabuhan ekspor Indonesia.</p>
             </div>
           </div>
         </div>
@@ -246,14 +246,14 @@ export function Jejak() {
         <div className="max-w-container-max mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-end mb-16">
             <h2 className="font-display-b2c text-4xl md:text-5xl text-primary md:w-2/3">
-              The Spice Apothecary: Essential Nutmeg Oil
+              Apoteker Rempah: Minyak Esensial Pala
             </h2>
             <div className="md:w-1/3 space-y-4">
               <p className="font-body-md text-on-surface-variant text-sm">
-                Experience the essence of the islands. Our essential oil is the benchmark for therapeutic grade and culinary luxury.
+                Rasakan esensi kepulauan. Minyak esensial kami adalah tolok ukur grade terapeutik dan kemewahan kuliner.
               </p>
               <a className="font-label-caps text-label-caps text-tertiary flex items-center gap-2 group hover:gap-3 transition-all" href="#">
-                Explore Marketplace 
+                Jelajahi Marketplace
                 <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </a>
             </div>
@@ -262,30 +262,30 @@ export function Jejak() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
             {[
               { 
-                name: "Essential Oil (30ml)", 
-                grade: "Therapeutic Grade", 
-                price: "€24.00",
+                name: "Minyak Esensial (30ml)", 
+                grade: "Grade Terapeutik", 
+                price: "Rp 185.000",
                 img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDPQucQgNK9XOIqfh-X0N8AhK4Z6lnN4NEAYJQVjzFN6e6s1Bi2C6YiDfLKyh9grFsjqe9LsJufaOmk-Ea4hdx1ys68kvhOSJx2GD4Ws4SkuaSHrhF47l2PfHrVdF9iFrmQaRAY0WeOQCxfCSDXKiXBS1DAWmrBwruSAdAlTcbxpTL_7pbWAwY3vbp9QA4Wf3odPpq916dnnZ0RT1Og-zaFNljTPJXb915XUxc09HgBmZUL9nZxSg",
                 shift: false 
               },
               { 
-                name: "Whole Seeds (250g)", 
+                name: "Biji Utuh (250g)", 
                 grade: "Grade ABCD", 
-                price: "€16.50",
+                price: "Rp 125.000",
                 img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIHaOtBYbH_nOL07TlXMt1PirltfQqdWzIe6scQgSkMKFGtwb9OLmnCfWJDpslbv-Zt62r2OScd8pmnuflFgkpoGLvZ96oOOl2kc-AAzuceTmRNfg_qVmAFmGzm6RfYjJhTb0FiX5G2b_dbxk39l0K7DclqOH-AT7cZto0B44NZo1M8BWiyukciHZ8vTXsEXQzrkgjwc5Oc2oxYOVahN3rP0UgYUODzsbIkQyZ2MUiWK4-Sc6bTA",
                 shift: true 
               },
               { 
-                name: "Dried Mace (100g)", 
-                grade: "High-Aroma", 
-                price: "€18.00",
+                name: "Fuli Kering (100g)", 
+                grade: "Aroma Tinggi", 
+                price: "Rp 145.000",
                 img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBbWaPzl8hYaBl4KScRB7igtFrwiHE0Ff_bsdQRsP35hR1aruF2bTc1kY76iIGrXuw7-17IldiKVR-afKqvUOKY3pYG63qjAvOU6OZwTKD01dzivx0cDzL1V3lA6pR8yFP4GVYk25F7DlPnJzb4g0yVpnFGgXHQxTxd9f16a_WhuAJLLpF2XPK218tXxikx3j3GbTC2zyHlZRQCGKVrFCvlnA2vxr2S8pPCTo2fOeitnJoPQxFxaQ",
                 shift: false 
               },
               { 
-                name: "Heritage Kit", 
-                grade: "Limited Batch", 
-                price: "€45.00",
+                name: "Paket Warisan", 
+                grade: "Batch Terbatas", 
+                price: "Rp 345.000",
                 img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXaEw9-WcDfEPVy1PomEZr1xW6FeG9sntoTPAHVk-Ln8SGnb_vY9h6Zf4npIDZB8J_RoOqBMDW9Gh67Ya3zjwGxj-XcERxvxB0BQ2_FlBoDXRZXTsJedv7SP6mKoKiAUiHgRoOiJxeCLfgXysUYo0cKGkpRbLQJOnZZJ15voiBJu_FO2R7n1RIS2jymquPtUsKbx60YrqaZo0Z5zwzScoTYKy-1EGuo43tT-Twil9ST0pYW8l_1A",
                 shift: true 
               }
@@ -304,7 +304,7 @@ export function Jejak() {
                   <div className="absolute inset-0 bg-[#442a22]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="bg-white/90 backdrop-blur-sm text-primary px-3 py-1.5 rounded-full font-mono text-xs font-bold flex items-center gap-1">
                       <ShoppingCart className="w-3.5 h-3.5" />
-                      ADD {p.price}
+                      BELI {p.price}
                     </span>
                   </div>
                 </div>
@@ -329,27 +329,27 @@ export function Jejak() {
               <div className="flex justify-between items-center border-b border-outline-variant/20 pb-4">
                 <div className="flex items-center gap-2 text-primary">
                   <ShieldCheck className="w-5 h-5" />
-                  <h3 className="text-xl font-display-b2c font-bold">Secure Traceability Ledger</h3>
+                  <h3 className="text-xl font-display-b2c font-bold">Buku Besar Keterlacakan Aman</h3>
                 </div>
-                <button onClick={() => setShowQRModal(false)} className="text-on-surface-variant hover:text-primary font-bold text-xl">&times;</button>
+                <button onClick={() => setShowQRModal(false)} className="text-on-surface-variant hover:text-primary font-bold text-xl" aria-label="Tutup">&times;</button>
               </div>
 
               <div className="space-y-4 font-mono text-xs text-on-surface-variant bg-surface-container-low p-5 rounded-lg border border-outline-variant/20">
                 <div className="flex justify-between">
-                  <span>REGISTRY RECORD:</span>
+                  <span>CATATAN REGISTRI:</span>
                   <span className="text-primary font-bold">#ATH-BLOCK-8204</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>BATCH ID:</span>
+                  <span>ID BATCH:</span>
                   <span className="text-primary font-bold">{batchId}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>ORIGIN NODE:</span>
-                  <span>Sawang Cooperative, Aceh Selatan</span>
+                  <span>NODE ASAL:</span>
+                  <span>Koperasi Petani, Banda Aceh</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>HARVEST VERIFIED:</span>
-                  <span className="text-secondary font-bold">YES &bull; Grade ABCD</span>
+                  <span>PANEN TERVERIFIKASI:</span>
+                  <span className="text-secondary font-bold">YA &bull; Grade ABCD</span>
                 </div>
                 <div className="flex justify-between">
                   <span>BLOCK HASH:</span>
@@ -358,14 +358,14 @@ export function Jejak() {
               </div>
 
               <p className="text-sm text-on-surface-variant leading-relaxed">
-                This batch has successfully cleared myristicin distillation and purity thresholds (9.84%). Secure tracking ledger is synced with the Port of Tapaktuan freight records.
+                Batch ini telah melewati ambang distilasi myristicin dan kemurnian (9.84%). Buku besar pelacakan aman telah disinkronkan dengan catatan pengiriman pelabuhan ekspor Indonesia.
               </p>
 
               <button 
                 onClick={() => setShowQRModal(false)}
                 className="w-full py-3.5 bg-primary text-white rounded-lg font-label-caps text-label-caps hover:bg-primary-container active:scale-95 transition-all"
               >
-                Close Report
+                Tutup Laporan
               </button>
             </motion.div>
           </div>
@@ -385,9 +385,9 @@ export function Jejak() {
               <div className="flex justify-between items-center border-b border-outline-variant/20 pb-4">
                 <div className="flex items-center gap-2 text-primary">
                   <Map className="w-5 h-5" />
-                  <h3 className="text-xl font-display-b2c font-bold">Grove Audit Report</h3>
+                  <h3 className="text-xl font-display-b2c font-bold">Laporan Audit Kebun</h3>
                 </div>
-                <button onClick={() => setShowGroveModal(false)} className="text-on-surface-variant hover:text-primary font-bold text-xl">&times;</button>
+                <button onClick={() => setShowGroveModal(false)} className="text-on-surface-variant hover:text-primary font-bold text-xl" aria-label="Tutup">&times;</button>
               </div>
 
               <div className="flex items-center gap-4 bg-surface-container-low p-4 rounded-lg border border-outline-variant/20">
@@ -397,32 +397,32 @@ export function Jejak() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaXt64IB2ubM_wUash5fD0D21OolvgzFS0NwUQWbrdPgX9BMOZ_gKACJ-v-9Fr3co_nL0GLPpL_rigsH4t17m7NErlQZOxJXWTNAWuMAhfbRd7o486UTp3XuPJ3o8quqrEpqfh3TE3i2fWda8GNlxm6vR1c-wNGc84J9WHVRDDgE3ZPxvhTUoQrTda9a8zWU4ItFIPM1VryxrBHZM3GI1XRao42tuxy3UqbUsgsGssreQxEFV0ww" 
                 />
                 <div>
-                  <h4 className="font-display-b2c font-bold text-primary">Bapak Syahrul's Grove</h4>
-                  <p className="text-xs text-on-surface-variant font-mono">Sawang Agroforest Node</p>
+                  <h4 className="font-display-b2c font-bold text-primary">Kebun Bapak Syahrul</h4>
+                  <p className="text-xs text-on-surface-variant font-mono">Node Agroforest Banda Aceh</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-xs font-mono">
                 <div className="border border-outline-variant/20 p-3 rounded">
-                  <span className="text-[10px] text-on-surface-variant uppercase block">Soil Moisture</span>
+                  <span className="text-[10px] text-on-surface-variant uppercase block">Kelembaban Tanah</span>
                   <span className="text-sm font-bold text-primary">34.8% &bull; Optimal</span>
                 </div>
                 <div className="border border-outline-variant/20 p-3 rounded">
-                  <span className="text-[10px] text-on-surface-variant uppercase block">Terrace Slope</span>
-                  <span className="text-sm font-bold text-primary">18&deg; Cured</span>
+                  <span className="text-[10px] text-on-surface-variant uppercase block">Kemiringan Teras</span>
+                  <span className="text-sm font-bold text-primary">18&deg; Terawat</span>
                 </div>
                 <div className="border border-outline-variant/20 p-3 rounded">
-                  <span className="text-[10px] text-on-surface-variant uppercase block">Harvest Purity</span>
-                  <span className="text-sm font-bold text-[#1b6d24]">96.4% Efficiency</span>
+                  <span className="text-[10px] text-on-surface-variant uppercase block">Kemurnian Panen</span>
+                  <span className="text-sm font-bold text-[#1b6d24]">96.4% Efisiensi</span>
                 </div>
                 <div className="border border-outline-variant/20 p-3 rounded">
-                  <span className="text-[10px] text-on-surface-variant uppercase block">Fertilizer Blend</span>
-                  <span className="text-sm font-bold text-primary">Organic Bio-compost</span>
+                  <span className="text-[10px] text-on-surface-variant uppercase block">Campuran Pupuk</span>
+                  <span className="text-sm font-bold text-primary">Bio-kompos Organik</span>
                 </div>
               </div>
 
               <p className="text-sm text-on-surface-variant leading-relaxed">
-                This grove uses shade-grown cultivation practices beneath the barisan rainforest canopy, preserving local biodiversity and retaining high soil organic matter levels.
+                Kebun ini menggunakan praktik budidaya naungan di bawah kanopi hutan hujan tropis Indonesia, menjaga keanekaragaman hayati lokal dan mempertahankan kandungan bahan organik tanah yang tinggi.
               </p>
 
               <button 
