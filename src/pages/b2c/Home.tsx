@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Link } from "react-router-dom"
 
 export function Home() {
   // Apoteker Rempah Chat
@@ -235,10 +236,10 @@ export function Home() {
               <h2 className="font-display-b2c text-3xl md:text-4xl text-primary mb-4">Pilihan Unggulan</h2>
               <p className="font-body-md text-on-surface-variant">Produk rempah terbaik dari kepulauan Indonesia.</p>
             </div>
-            <a className="font-label-caps text-label-caps text-primary flex items-center gap-2 hover:gap-4 transition-all group" href="/services">
+            <Link className="font-label-caps text-label-caps text-primary flex items-center gap-2 hover:gap-4 transition-all group" to="/services">
               Lihat Semua
               <span className="material-symbols-outlined" data-icon="trending_flat">trending_flat</span>
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
