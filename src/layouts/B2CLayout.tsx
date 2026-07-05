@@ -1,7 +1,16 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet, Link, useLocation } from "react-router-dom"
 import { ModeSwitcher } from "../components/ModeSwitcher"
 
 export function B2CLayout() {
+  const location = useLocation()
+
+  const getLinkClass = (path: string) => {
+    const base = "font-label-caps text-label-caps transition-colors "
+    const active = "text-primary border-b-2 border-tertiary pb-1"
+    const inactive = "text-on-surface-variant hover:text-tertiary"
+    return location.pathname === path ? `${base}${active}` : `${base}${inactive}`
+  }
+
   return (
     <div className="min-h-screen bg-background text-on-background font-body-md">
       {/* TopNavBar */}
@@ -11,18 +20,18 @@ export function B2CLayout() {
             Athesa Nutmeg
           </Link>
           <div className="hidden md:flex gap-8">
-            <Link className="font-label-caps text-label-caps text-primary border-b-2 border-tertiary pb-1 hover:text-tertiary transition-colors" to="/">
+            <Link className={getLinkClass("/")} to="/">
               Marketplace
             </Link>
-            <Link className="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" to="/jejak">
+            <Link className={getLinkClass("/jejak")} to="/jejak">
               Traceability
             </Link>
-            <Link className="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" to="/about">
+            <Link className={getLinkClass("/about")} to="/about">
               Impact
             </Link>
-            <a className="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#services">
+            <Link className={getLinkClass("/services")} to="/services">
               Services
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-6">
