@@ -68,14 +68,14 @@ export function Home() {
             Dipanen tangan dari lereng subur kepulauan Indonesia, pala kami mewakili tradisi berabad-abad dalam keunggulan botani. Temukan minyak esensial paling aromatik dan sirup artisanal dari tanah rempah terbaik dunia.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a href="services">
-            <button className="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-caps text-label-caps flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
-              Jelajahi Koleksi
-              <span className="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-            </button>
+            <a href="#">
+              <button className="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-caps text-label-caps flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
+                Jelajahi Koleksi
+                <span className="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+              </button>
             </a>
             <a
-              href="services"
+              href="#jejak-rempah"
               className="border border-primary text-primary px-8 py-4 rounded-lg font-label-caps text-label-caps hover:bg-primary/5 transition-all text-center"
             >
               Kisah Rempah Nusantara
@@ -195,11 +195,10 @@ export function Home() {
                 <div
                   key={item.step}
                   onClick={() => setActiveStep(item.step)}
-                  className={`cursor-pointer p-6 rounded-lg transition-all duration-300 border ${
-                    activeStep === item.step
+                  className={`cursor-pointer p-6 rounded-lg transition-all duration-300 border ${activeStep === item.step
                       ? "bg-white/10 border-white/20"
                       : "border-transparent opacity-60 hover:opacity-90"
-                  }`}
+                    }`}
                 >
                   <span className="font-data-mono text-tertiary-fixed mb-2 block">{item.label}</span>
                   <h3 className="font-display-b2c text-2xl mb-4">{item.title}</h3>
@@ -217,8 +216,8 @@ export function Home() {
                     activeStep === 1
                       ? "https://lh3.googleusercontent.com/aida-public/AB6AXuBI7VbrlXql4q7qpsmji9JhzZs1bvulJyMnn9yHnfNOQ2jlb3_Qdc1NVAp4_ggibIcLtuhF4gopUE8-s0mWfMZNZAhIPnP4u2t45rmKb0ioXBx02-pQMmDHr1mr-DHbClXOhvjCSLySTHnSM1ptKPAZ_ujlRzD_uInD2g7qb2aq4Pu9QvfU1V2MHYn86-KXHVbEhsymaNeaQ86KJo2a4-VJOpdX8JcONm0FFYWwAqLbqWNmIFq0GQ"
                       : activeStep === 2
-                      ? "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80"
-                      : "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80"
+                        ? "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80"
+                        : "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80"
                   }
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
@@ -236,7 +235,7 @@ export function Home() {
               <h2 className="font-display-b2c text-3xl md:text-4xl text-primary mb-4">Pilihan Unggulan</h2>
               <p className="font-body-md text-on-surface-variant">Produk rempah terbaik dari kepulauan Indonesia.</p>
             </div>
-            <a className="font-label-caps text-label-caps text-primary flex items-center gap-2 hover:gap-4 transition-all group" href="services">
+            <a className="font-label-caps text-label-caps text-primary flex items-center gap-2 hover:gap-4 transition-all group" href="/services">
               Lihat Semua
               <span className="material-symbols-outlined" data-icon="trending_flat">trending_flat</span>
             </a>
