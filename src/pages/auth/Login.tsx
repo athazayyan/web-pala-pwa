@@ -1,8 +1,18 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 type Role = "pembeli" | "penjual" | "admin"
+type PenjualAccount = "ahmad" | "pinkan"
+
+const dummyAccounts = {
+  pembeli: { email: "budi@gmail.com", password: "budi123", nama: "Budi Santoso" },
+  penjual: {
+    ahmad: { email: "ahmad@athesa.id", password: "ahmad123", nama: "Ahmad Fauzi" },
+    pinkan: { email: "pinkan@athesa.id", password: "pinkan123", nama: "Pinkan Maharani" },
+  },
+  admin: { email: "admin@athesa.id", password: "admin2026", nama: "Administrator" },
+}
 
 const roles: { value: Role; label: string; icon: string }[] = [
   { value: "pembeli", label: "Pembeli", icon: "shopping_basket" },
@@ -10,33 +20,39 @@ const roles: { value: Role; label: string; icon: string }[] = [
   { value: "admin", label: "Admin", icon: "admin_panel_settings" },
 ]
 
+const penjualAccounts: { value: PenjualAccount; nama: string; avatar: string }[] = [
+  { value: "ahmad", nama: "Ahmad Fauzi", avatar: "A" },
+  { value: "pinkan", nama: "Pinkan Maharani", avatar: "P" },
+]
+
 export function Login() {
-  const [form, setForm] = useState({ email: "", password: "" })
   const [selectedRole, setSelectedRole] = useState<Role>("pembeli")
+  const [selectedPenjual, setSelectedPenjual] = useState<PenjualAccount>("ahmad")
   const [showPass, setShowPass] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const navigate = useNavigate()
 
+  // Compute current dummy account
+  const currentAccount =
+    selectedRole === "penjual"
+      ? dummyAccounts.penjual[selectedPenjual]
+      : dummyAccounts[selectedRole]
+
+  const handleRoleChange = (role: Role) => {
+    setSelectedRole(role)
+    setError(null)
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.email || !form.password) {
-      setError("Email dan password wajib diisi.")
-      return
-    }
     setError(null)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      // Redirect based on role
       if (selectedRole === "admin") navigate("/b2b")
       else navigate("/")
     }, 1600)
-  }
-
-  const handleChange = (field: keyof typeof form, value: string) => {
-    setForm((f) => ({ ...f, [field]: value }))
-    setError(null)
   }
 
   return (
@@ -44,7 +60,7 @@ export function Login() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-surface border border-outline-variant/30 rounded-xl shadow-2xl p-8 space-y-6"
+      className="bg-surface border border-outline-variant/30 rounded-xl shadow-2xl p-8 space-y-5"
     >
       {/* Brand */}
       <div className="text-center space-y-1">
@@ -61,10 +77,10 @@ export function Login() {
           <button
             key={r.value}
             type="button"
-            onClick={() => setSelectedRole(r.value)}
+            onClick={() => handleRoleChange(r.value)}
             className={`flex flex-col items-center gap-1.5 p-3 rounded-lg border text-center transition-all ${
               selectedRole === r.value
-                ? "border-primary bg-primary/5 text-primary"
+                ? "border-primary bg-primary/5 text-primary shadow-sm"
                 : "border-outline-variant/30 text-on-surface-variant hover:border-primary/40"
             }`}
           >
@@ -74,9 +90,58 @@ export function Login() {
         ))}
       </div>
 
+      {/* Penjual Sub-Selector */}
+      <AnimatePresence>
+        {selectedRole === "penjual" && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 text-[10px]">PILIH AKUN PENJUAL</p>
+            <div className="grid grid-cols-2 gap-2">
+              {penjualAccounts.map((acc) => (
+                <button
+                  key={acc.value}
+                  type="button"
+                  onClick={() => setSelectedPenjual(acc.value)}
+                  className={`flex items-center gap-3 p-3 rounded-lg border transition-all text-left ${
+                    selectedPenjual === acc.value
+                      ? "border-secondary bg-secondary/5 text-secondary"
+                      : "border-outline-variant/30 text-on-surface-variant hover:border-secondary/40"
+                  }`}
+                >
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${
+                    selectedPenjual === acc.value ? "bg-secondary text-white" : "bg-surface-container-high"
+                  }`}>
+                    {acc.avatar}
+                  </div>
+                  <div>
+                    <p className="font-label-caps text-[11px] font-semibold leading-tight">{acc.nama}</p>
+                    <p className="text-[9px] opacity-60 font-mono">{dummyAccounts.penjual[acc.value].email}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Dummy Account Info Badge */}
+      <div className="bg-tertiary-fixed/30 border border-tertiary/20 rounded-lg px-4 py-2.5 flex items-start gap-2">
+        <span className="material-symbols-outlined text-tertiary text-sm mt-0.5">info</span>
+        <div>
+          <p className="font-label-caps text-[10px] text-tertiary font-semibold">AKUN DEMO</p>
+          <p className="text-[11px] text-on-surface-variant font-mono">
+            Masuk sebagai <span className="text-primary font-bold">{currentAccount.nama}</span>
+          </p>
+        </div>
+      </div>
+
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Email */}
+        {/* Email (read-only dummy) */}
         <div>
           <label className="font-label-caps text-label-caps text-on-surface-variant block mb-1">
             Alamat Email
@@ -87,15 +152,15 @@ export function Login() {
             </span>
             <input
               type="email"
-              value={form.email}
-              onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="contoh@email.com"
-              className="w-full pl-10 pr-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+              value={currentAccount.email}
+              readOnly
+              className="w-full pl-10 pr-10 py-3 rounded-lg border border-outline-variant bg-surface-container text-on-surface text-sm focus:outline-none cursor-not-allowed opacity-80 font-mono"
             />
+            <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary text-base">lock</span>
           </div>
         </div>
 
-        {/* Password */}
+        {/* Password (read-only dummy) */}
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="font-label-caps text-label-caps text-on-surface-variant">
@@ -111,10 +176,9 @@ export function Login() {
             </span>
             <input
               type={showPass ? "text" : "password"}
-              value={form.password}
-              onChange={(e) => handleChange("password", e.target.value)}
-              placeholder="Masukkan password"
-              className="w-full pl-10 pr-12 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+              value={currentAccount.password}
+              readOnly
+              className="w-full pl-10 pr-12 py-3 rounded-lg border border-outline-variant bg-surface-container text-on-surface text-sm focus:outline-none cursor-not-allowed opacity-80 font-mono"
             />
             <button
               type="button"
@@ -126,19 +190,23 @@ export function Login() {
               </span>
             </button>
           </div>
+          <p className="text-[10px] text-on-surface-variant/50 mt-1 font-mono">Kredensial demo — tidak dapat diubah</p>
         </div>
 
         {/* Error */}
-        {error && (
-          <motion.div
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-error text-sm bg-error-container/30 px-4 py-2.5 rounded-lg border border-error/20"
-          >
-            <span className="material-symbols-outlined text-base">error</span>
-            {error}
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="flex items-center gap-2 text-error text-sm bg-error-container/30 px-4 py-2.5 rounded-lg border border-error/20"
+            >
+              <span className="material-symbols-outlined text-base">error</span>
+              {error}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Submit */}
         <button
@@ -154,7 +222,7 @@ export function Login() {
           ) : (
             <>
               <span className="material-symbols-outlined text-sm">login</span>
-              Masuk sebagai {roles.find((r) => r.value === selectedRole)?.label}
+              Masuk sebagai {currentAccount.nama}
             </>
           )}
         </button>

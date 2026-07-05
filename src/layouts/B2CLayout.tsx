@@ -29,7 +29,7 @@ export function B2CLayout() {
               Dampak
             </Link>
             <Link className={getLinkClass("/services")} to="/services">
-              Layanan
+              Marketplace
             </Link>
           </div>
         </div>
