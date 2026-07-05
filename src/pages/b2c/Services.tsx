@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useNavigate } from "react-router-dom"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Product {
@@ -155,6 +156,7 @@ export function Services() {
   const [activeTab, setActiveTab] = useState<"belanja" | "konsultasi">("belanja")
 
   // Marketplace state
+  const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("Semua")
   const [selectedSeller, setSelectedSeller] = useState("Semua Penjual")
@@ -355,10 +357,13 @@ export function Services() {
                     layout
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-surface border border-outline-variant/20 rounded-xl overflow-hidden hover:shadow-lg hover:border-outline-variant/50 transition-all group"
+                    className="bg-surface border border-outline-variant/20 rounded-xl overflow-hidden hover:shadow-lg hover:border-outline-variant/50 transition-all group flex flex-col justify-between"
                   >
                     {/* Product Image */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div 
+                      onClick={() => navigate(`/produk/${p.id}`)}
+                      className="relative aspect-[4/3] overflow-hidden cursor-pointer"
+                    >
                       <img
                         src={p.img}
                         alt={p.name}
@@ -376,34 +381,43 @@ export function Services() {
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-5">
-                      {/* Seller */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[10px] font-bold shrink-0">
-                          {p.sellerAvatar}
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        {/* Seller */}
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[10px] font-bold shrink-0">
+                            {p.sellerAvatar}
+                          </div>
+                          <span className="text-xs text-on-surface-variant font-mono">{p.seller}</span>
+                          <span className="ml-auto font-label-caps text-[10px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-full">{p.grade}</span>
                         </div>
-                        <span className="text-xs text-on-surface-variant font-mono">{p.seller}</span>
-                        <span className="ml-auto font-label-caps text-[10px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-full">{p.grade}</span>
+
+                        <h3 
+                          onClick={() => navigate(`/produk/${p.id}`)}
+                          className="font-display-b2c text-base text-primary mb-1 leading-snug cursor-pointer hover:underline"
+                        >
+                          {p.name}
+                        </h3>
+                        <p className="font-body-sm text-on-surface-variant text-xs mb-3 line-clamp-2">{p.desc}</p>
                       </div>
 
-                      <h3 className="font-display-b2c text-base text-primary mb-1 leading-snug">{p.name}</h3>
-                      <p className="font-body-sm text-on-surface-variant text-xs mb-3 line-clamp-2">{p.desc}</p>
-
-                      <div className="flex items-center justify-between mb-4">
-                        <div>
-                          <span className="font-display-b2c text-lg text-primary">{formatRp(p.price)}</span>
-                          <span className="text-xs text-on-surface-variant ml-1">/{p.unit}</span>
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <span className="font-display-b2c text-lg text-primary">{formatRp(p.price)}</span>
+                            <span className="text-xs text-on-surface-variant ml-1">/{p.unit}</span>
+                          </div>
+                          <span className="text-xs text-on-surface-variant font-mono">{p.sold} terjual</span>
                         </div>
-                        <span className="text-xs text-on-surface-variant font-mono">{p.sold} terjual</span>
-                      </div>
 
-                      <button
-                        onClick={() => addToCart(p.id, p.name)}
-                        className="w-full py-2.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all"
-                      >
-                        <span className="material-symbols-outlined text-sm">add_shopping_cart</span>
-                        Tambah ke Keranjang
-                      </button>
+                        <button
+                          onClick={() => addToCart(p.id, p.name)}
+                          className="w-full py-2.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all"
+                        >
+                          <span className="material-symbols-outlined text-sm">add_shopping_cart</span>
+                          Tambah ke Keranjang
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -514,18 +528,26 @@ export function Services() {
                       <div className="ml-11 flex flex-wrap gap-3">
                         {msg.products.map((prod) => (
                           <div key={prod.id} className="bg-white border border-outline-variant/20 rounded-xl p-3 flex gap-3 shadow-sm max-w-xs">
-                            <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                              <img src={prod.img} alt={prod.name} className="w-full h-full object-cover" />
+                            <div 
+                              onClick={() => navigate(`/produk/${prod.id}`)}
+                              className="w-16 h-16 rounded-lg overflow-hidden shrink-0 cursor-pointer"
+                            >
+                              <img src={prod.img} alt={prod.name} className="w-full h-full object-cover hover:scale-105 transition-transform" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className="font-display-b2c text-sm text-primary leading-tight truncate">{prod.name}</p>
+                              <p 
+                                onClick={() => navigate(`/produk/${prod.id}`)}
+                                className="font-display-b2c text-sm text-primary leading-tight truncate cursor-pointer hover:underline"
+                              >
+                                {prod.name}
+                              </p>
                               <p className="text-xs text-on-surface-variant font-mono mt-0.5">{prod.seller}</p>
                               <p className="font-bold text-tertiary text-sm mt-1">{formatRp(prod.price)}</p>
                               <button
-                                onClick={() => { addToCart(prod.id, prod.name); setActiveTab("belanja") }}
+                                onClick={() => navigate(`/produk/${prod.id}`)}
                                 className="mt-1.5 text-[10px] font-label-caps text-secondary flex items-center gap-1 hover:text-on-secondary-container transition-colors"
                               >
-                                BELI SEKARANG <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                                LIHAT DETAIL <span className="material-symbols-outlined text-xs">arrow_forward</span>
                               </button>
                             </div>
                           </div>

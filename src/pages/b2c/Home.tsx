@@ -68,12 +68,14 @@ export function Home() {
             Dipanen tangan dari lereng subur kepulauan Indonesia, pala kami mewakili tradisi berabad-abad dalam keunggulan botani. Temukan minyak esensial paling aromatik dan sirup artisanal dari tanah rempah terbaik dunia.
           </p>
           <div className="flex flex-wrap gap-4">
+            <a href="services">
             <button className="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-caps text-label-caps flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
               Jelajahi Koleksi
               <span className="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
             </button>
+            </a>
             <a
-              href="#jejak-rempah"
+              href="services"
               className="border border-primary text-primary px-8 py-4 rounded-lg font-label-caps text-label-caps hover:bg-primary/5 transition-all text-center"
             >
               Kisah Rempah Nusantara
@@ -234,7 +236,7 @@ export function Home() {
               <h2 className="font-display-b2c text-3xl md:text-4xl text-primary mb-4">Pilihan Unggulan</h2>
               <p className="font-body-md text-on-surface-variant">Produk rempah terbaik dari kepulauan Indonesia.</p>
             </div>
-            <a className="font-label-caps text-label-caps text-primary flex items-center gap-2 hover:gap-4 transition-all group" href="#marketplace">
+            <a className="font-label-caps text-label-caps text-primary flex items-center gap-2 hover:gap-4 transition-all group" href="services">
               Lihat Semua
               <span className="material-symbols-outlined" data-icon="trending_flat">trending_flat</span>
             </a>
