@@ -230,7 +230,7 @@ export function Jejak() {
             <div className="relative pl-12 before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-[-24px] before:w-[2px] before:bg-secondary">
               <span className="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-xs">02</span>
               <h5 className="font-display-b2c font-bold text-primary">Ekstraksi</h5>
-              <p className="text-sm text-on-surface-variant">Diproses di Hub Athesa dalam 24 jam setelah panen.</p>
+              <p className="text-sm text-on-surface-variant">Diproses di Hub PalaMart dalam 24 jam setelah panen.</p>
             </div>
             <div className="relative pl-12">
               <span className="absolute left-0 top-0 w-8 h-8 rounded-full bg-tertiary text-white flex items-center justify-center font-bold text-xs">03</span>

@@ -10,7 +10,7 @@ export function B2BLayout() {
       <aside className="w-64 border-r border-outline-variant/30 bg-surface-container-lowest flex flex-col">
         <div className="h-16 flex items-center px-6 border-b border-outline-variant/30">
           <Link to="/b2b" className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight text-on-surface">Athesa</span>
+            <span className="text-xl font-bold tracking-tight text-on-surface">PalaMart</span>
             <span className="text-xs uppercase tracking-widest text-on-surface-variant font-mono">B2B Core</span>
           </Link>
         </div>

@@ -36,7 +36,7 @@ export function TambahBarang() {
     <div className="p-8 max-w-3xl">
       <div className="mb-8">
         <h1 className="font-display-b2c text-2xl text-primary">Tambah Barang Baru</h1>
-        <p className="text-sm text-on-surface-variant mt-1">Isi detail produk untuk mulai berjualan di Athesa Nutmeg</p>
+        <p className="text-sm text-on-surface-variant mt-1">Isi detail produk untuk mulai berjualan di PalaMart</p>
       </div>
 
       {submitted ? (

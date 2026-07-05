@@ -24,7 +24,7 @@ export function B2CLayout() {
       <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30">
         <div className="flex items-center gap-12">
           <Link className="font-display-b2c text-[28px] text-primary" to="/">
-            Athesa Nutmeg
+            PalaMart
           </Link>
           <div className="hidden md:flex gap-8">
             <Link className={getLinkClass("/")} to="/">Beranda</Link>
@@ -90,7 +90,7 @@ export function B2CLayout() {
       <footer className="w-full py-12 px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-primary text-on-primary">
         <div className="col-span-1">
           <Link className="font-display-b2c text-headline-lg text-on-primary block mb-6" to="/">
-            Athesa Nutmeg
+            PalaMart
           </Link>
           <p className="font-body-sm text-on-primary/60 max-w-[240px]">
             Menghubungkan kearifan rempah Nusantara dengan pasar global melalui teknologi modern.
@@ -126,7 +126,7 @@ export function B2CLayout() {
               <span className="material-symbols-outlined">send</span>
             </button>
           </div>
-          <p className="mt-8 font-body-sm text-on-primary/40">© 2026 Athesa Nutmeg. Dari Nusantara untuk Dunia.</p>
+          <p className="mt-8 font-body-sm text-on-primary/40">© 2026 PalaMart. Dari Nusantara untuk Dunia.</p>
         </div>
       </footer>
     </div>

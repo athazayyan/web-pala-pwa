@@ -10,10 +10,10 @@ type PenjualAccount = "ahmad" | "pinkan"
 const dummyAccounts = {
   pembeli: { email: "budi@gmail.com", password: "budi123", nama: "Budi Santoso", avatar: "B" },
   penjual: {
-    ahmad: { email: "ahmad@athesa.id", password: "ahmad123", nama: "Ahmad Fauzi", avatar: "A" },
-    pinkan: { email: "pinkan@athesa.id", password: "pinkan123", nama: "Pinkan Maharani", avatar: "P" },
+    ahmad: { email: "ahmad@palamart.id", password: "ahmad123", nama: "Ahmad Fauzi", avatar: "A" },
+    pinkan: { email: "pinkan@palamart.id", password: "pinkan123", nama: "Pinkan Maharani", avatar: "P" },
   },
-  admin: { email: "admin@athesa.id", password: "admin2026", nama: "Administrator", avatar: "AD" },
+  admin: { email: "admin@palamart.id", password: "admin2026", nama: "Administrator", avatar: "AD" },
 }
 
 const roles: { value: Role; label: string; icon: string }[] = [
@@ -69,7 +69,7 @@ export function Login() {
       {/* Brand */}
       <div className="text-center space-y-1">
         <Link to="/" className="font-display-b2c text-2xl text-primary block hover:opacity-80 transition-opacity">
-          Athesa Nutmeg
+          PalaMart
         </Link>
         <h1 className="font-display-b2c text-xl text-on-surface">Masuk ke Akun</h1>
         <p className="text-on-surface-variant text-sm">Selamat datang kembali di platform rempah Nusantara</p>

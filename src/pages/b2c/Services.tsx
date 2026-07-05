@@ -168,7 +168,7 @@ export function Services() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      text: `"Selamat datang. Saya adalah Apoteker Rempah. Ceritakan kebutuhan atau keluhan Anda, dan saya akan merekomendasikan produk terbaik dari koleksi Athesa Nutmeg."`,
+      text: `"Selamat datang. Saya adalah Apoteker Rempah. Ceritakan kebutuhan atau keluhan Anda, dan saya akan merekomendasikan produk terbaik dari koleksi PalaMart."`,
       isUser: false,
     },
   ])

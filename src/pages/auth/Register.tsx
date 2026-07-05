@@ -7,7 +7,7 @@ type Role = "pembeli" | "penjual" | "admin"
 const roles: { value: Role; label: string; desc: string; icon: string }[] = [
   { value: "pembeli", label: "Pembeli", desc: "Beli produk rempah pilihan", icon: "shopping_basket" },
   { value: "penjual", label: "Penjual", desc: "Jual hasil rempah Anda", icon: "storefront" },
-  { value: "admin", label: "Admin", desc: "Kelola platform Athesa", icon: "admin_panel_settings" },
+  { value: "admin", label: "Admin", desc: "Kelola platform PalaMart", icon: "admin_panel_settings" },
 ]
 
 export function Register() {
@@ -58,7 +58,7 @@ export function Register() {
       {/* Brand */}
       <div className="text-center space-y-1">
         <Link to="/" className="font-display-b2c text-2xl text-primary block hover:opacity-80 transition-opacity">
-          Athesa Nutmeg
+          PalaMart
         </Link>
         <h1 className="font-display-b2c text-xl text-on-surface">Buat Akun Baru</h1>
         <p className="text-on-surface-variant text-sm">Bergabunglah dengan ekosistem rempah Nusantara</p>

@@ -28,7 +28,7 @@ export function PenjualLayout() {
         {/* Brand */}
         <div className="px-6 pt-8 pb-6 border-b border-on-primary/10">
           <a href="/" className="font-display-b2c text-2xl text-on-primary hover:opacity-80 transition-opacity block">
-            Athesa Nutmeg
+            PalaMart
           </a>
           <p className="text-[10px] font-label-caps text-on-primary/50 mt-1 uppercase tracking-widest">
             Portal Penjual
@@ -74,7 +74,7 @@ export function PenjualLayout() {
 
         {/* Bottom: Help & version */}
         <div className="px-6 py-4 border-t border-on-primary/10">
-          <p className="text-[10px] text-on-primary/30 font-mono">Athesa Nutmeg v2026.07</p>
+          <p className="text-[10px] text-on-primary/30 font-mono">PalaMart v2026.07</p>
         </div>
       </aside>
 
@@ -97,7 +97,7 @@ export function PenjualLayout() {
               className="fixed left-0 top-0 bottom-0 w-64 bg-primary text-on-primary z-40 md:hidden flex flex-col"
             >
               <div className="px-6 pt-8 pb-6 border-b border-on-primary/10">
-                <a href="/" className="font-display-b2c text-2xl text-on-primary">Athesa Nutmeg</a>
+                <a href="/" className="font-display-b2c text-2xl text-on-primary">PalaMart</a>
                 <p className="text-[10px] font-label-caps text-on-primary/50 mt-1 uppercase tracking-widest">Portal Penjual</p>
               </div>
               <nav className="flex-1 px-3 py-4 space-y-1">

@@ -29,7 +29,7 @@ export function BarangSaya() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display-b2c text-2xl text-primary">Barang Saya</h1>
-          <p className="text-sm text-on-surface-variant mt-1">Kelola semua produk yang Anda jual di Athesa Nutmeg</p>
+          <p className="text-sm text-on-surface-variant mt-1">Kelola semua produk yang Anda jual di PalaMart</p>
         </div>
         <button
           onClick={() => navigate("/penjual/tambah")}

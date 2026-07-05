@@ -27,7 +27,7 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(() => {
     try {
-      const stored = localStorage.getItem("athesa_user")
+      const stored = localStorage.getItem("palamart_user")
       return stored ? JSON.parse(stored) : null
     } catch {
       return null
@@ -36,12 +36,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = (u: AuthUser) => {
     setUser(u)
-    localStorage.setItem("athesa_user", JSON.stringify(u))
+    localStorage.setItem("palamart_user", JSON.stringify(u))
   }
 
   const logout = () => {
     setUser(null)
-    localStorage.removeItem("athesa_user")
+    localStorage.removeItem("palamart_user")
   }
 
   return (
