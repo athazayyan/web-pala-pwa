@@ -2,12 +2,14 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useCart } from "../context/CartContext"
 
 export function B2CLayout() {
   const location = useLocation()
   const { user, isLoggedIn, logout } = useAuth()
   const navigate = useNavigate()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { cartCount } = useCart()
 
   const getLinkClass = (path: string) => {
     const base = "font-label-caps text-label-caps transition-colors "
@@ -38,9 +40,14 @@ export function B2CLayout() {
 
         <div className="flex items-center gap-3">
           {/* Cart */}
-          <button className="text-primary hover:text-tertiary transition-all active:scale-95">
+          <Link to="/cart" className="text-primary hover:text-tertiary transition-all active:scale-95 relative flex items-center p-1.5 rounded-full hover:bg-surface-container-low">
             <span className="material-symbols-outlined">shopping_basket</span>
-          </button>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-tertiary text-on-tertiary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border border-surface shadow-sm">
+                {cartCount}
+              </span>
+            )}
+          </Link>
 
           {isLoggedIn ? (
             /* Logged-in state */
@@ -199,6 +206,20 @@ export function B2CLayout() {
                   }`}
                 >
                   Dampak
+                </Link>
+                <Link
+                  to="/cart"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`font-label-caps text-[15px] tracking-wide py-2 border-b border-outline-variant/10 flex justify-between items-center ${
+                    location.pathname === "/cart" ? "text-primary font-bold" : "text-on-surface-variant"
+                  }`}
+                >
+                  <span>Keranjang</span>
+                  {cartCount > 0 && (
+                    <span className="bg-tertiary text-on-tertiary text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
               </div>
 

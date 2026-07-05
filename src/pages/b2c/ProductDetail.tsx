@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useAuth } from "../../context/AuthContext"
+import { useCart } from "../../context/CartContext"
 
 const allProducts = [
   { id: "p1", name: "Minyak Esensial Pala Murni", seller: "Ahmad Fauzi", sellerAvatar: "A", sellerKota: "Banda Aceh, Aceh", sellerGPS: "5.5483° N, 95.3238° E", sellerFoto: "https://lh3.googleusercontent.com/aida-public/AB6AXuCaXt64IB2ubM_wUash5fD0D21OolvgzFS0NwUQWbrdPgX9BMOZ_gKACJ-v-9Fr3co_nL0GLPpL_rigsH4t17m7NErlQZOxJXWTNAWuMAhfbRd7o486UTp3XuPJ3o8quqrEpqfh3TE3i2fWda8GNlxm6vR1c-wNGc84J9WHVRDDgE3ZPxvhTUoQrTda9a8zWU4ItFIPM1VryxrBHZM3GI1XRao42tuxy3UqbUsgsGssreQxEFV0ww", category: "Minyak Esensial", price: 185000, unit: "30ml", stock: 42, rating: 4.9, sold: 312, badge: "Terlaris", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDexw52erlBzdsXAMSGCOcUB2OigNuW2IOeK_oy8f_5Q1ziMlsvKC6SI94sZU_ocY7KHQBO0jrbiIvi7VqWEgstklXXTnIlT23ZqINrTbk8fqVPfHXz73nGHdF1l9g2CXA1NyV_bHl5lob3Lh_WwKhTqJ3pD0ip3XC9svTAAZsgwbyi1rzFmizg9p8OveyGS9V5k-YacGQQopOGQ6i9ew8E8yeujPBInLEyuv33pCNDSpSqHh3aA", desc: "Diekstrak dari biji pala pilihan menggunakan distilasi uap bertekanan rendah dari tanah vulkanik Nusantara. Cocok untuk aromaterapi, perawatan kulit, dan penggunaan kuliner premium.", batchId: "AT-2024-SA01", harvestDate: "12 Okt 2024", soilMoisture: "34.8%", farmerGen: "Generasi ke-3", traceSteps: ["Budidaya naungan di bawah kanopi hutan hujan tropis Banda Aceh", "Distilasi uap bertekanan rendah dalam 24 jam setelah panen", "Dikemas dan dikirim melalui pelabuhan ekspor Aceh"] },
@@ -38,6 +39,7 @@ export function ProductDetail() {
   const { isLoggedIn } = useAuth()
   const [qty, setQty] = useState(1)
   const [addedToCart, setAddedToCart] = useState(false)
+  const { addToCart } = useCart()
 
   const product = allProducts.find((p) => p.id === id)
 
@@ -53,6 +55,15 @@ export function ProductDetail() {
 
   const handleAddCart = () => {
     if (!isLoggedIn) { navigate("/login"); return }
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      unit: product.unit,
+      img: product.img,
+      seller: product.seller,
+      stock: product.stock,
+    }, qty)
     setAddedToCart(true)
     setTimeout(() => setAddedToCart(false), 2000)
   }

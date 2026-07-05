@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useNavigate } from "react-router-dom"
+import { useCart } from "../../context/CartContext"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Product {
@@ -161,7 +162,7 @@ export function Services() {
   const [selectedCategory, setSelectedCategory] = useState("Semua")
   const [selectedSeller, setSelectedSeller] = useState("Semua Penjual")
   const [sortBy, setSortBy] = useState("terlaris")
-  const [cart, setCart] = useState<string[]>([])
+  const { cartItems, addToCart } = useCart()
   const [addedToast, setAddedToast] = useState<string | null>(null)
 
   // AI Chat state
@@ -196,8 +197,19 @@ export function Services() {
       return 0
     })
 
-  const addToCart = (productId: string, productName: string) => {
-    setCart((prev) => [...prev, productId])
+  const handleAddToCart = (productId: string, productName: string) => {
+    const prod = products.find((p) => p.id === productId)
+    if (prod) {
+      addToCart({
+        id: prod.id,
+        name: prod.name,
+        price: prod.price,
+        unit: prod.unit,
+        img: prod.img,
+        seller: prod.seller,
+        stock: prod.stock,
+      })
+    }
     setAddedToast(productName)
     setTimeout(() => setAddedToast(null), 2000)
   }
@@ -411,7 +423,7 @@ export function Services() {
                         </div>
 
                         <button
-                          onClick={() => addToCart(p.id, p.name)}
+                          onClick={() => handleAddToCart(p.id, p.name)}
                           className="w-full py-2.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all"
                         >
                           <span className="material-symbols-outlined text-sm">add_shopping_cart</span>
@@ -425,16 +437,17 @@ export function Services() {
             )}
 
             {/* Cart summary sticky */}
-            {cart.length > 0 && (
+            {cartItems.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                onClick={() => navigate("/cart")}
                 className="fixed bottom-6 right-6 z-40 bg-primary text-on-primary px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-3 cursor-pointer hover:opacity-90 transition-all"
               >
                 <span className="material-symbols-outlined">shopping_basket</span>
-                <span className="font-label-caps">{cart.length} item di keranjang</span>
-                <div className="w-6 h-6 bg-tertiary-fixed text-on-tertiary-fixed rounded-full flex items-center justify-center text-xs font-bold">
-                  {cart.length}
+                <span className="font-label-caps">{cartItems.length} jenis produk</span>
+                <div className="w-6 h-6 bg-tertiary text-on-tertiary rounded-full flex items-center justify-center text-xs font-bold">
+                  {cartItems.reduce((acc, curr) => acc + curr.quantity, 0)}
                 </div>
               </motion.div>
             )}
