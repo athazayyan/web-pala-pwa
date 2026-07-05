@@ -4,6 +4,7 @@ import { B2CLayout } from "./layouts/B2CLayout"
 import { B2BLayout } from "./layouts/B2BLayout"
 import { Home } from "./pages/b2c/Home"
 import { Services } from "./pages/b2c/Services"
+import { Jejak } from "./pages/b2c/Jejak"
 import { Dashboard } from "./pages/b2b/Dashboard"
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         {/* B2C Routes */}
         <Route path="/" element={<B2CLayout />}>
           <Route index element={<Home />} />
-          <Route path="jejak" element={<div className="p-8 text-center">Jejak Rempah - Coming Soon</div>} />
+          <Route path="jejak" element={<Jejak />} />
           <Route path="services" element={<Services />} />
           <Route path="about" element={<div className="p-8 text-center">Story - Coming Soon</div>} />
         </Route>
