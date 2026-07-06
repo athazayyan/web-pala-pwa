@@ -43,8 +43,8 @@ const weatherData = {
 // Tree health analysis simulation results
 const analysisResults = [
   { status: "Sehat", desc: "Daun berwarna hijau segar, tidak ada tanda serangan hama atau penyakit. Kadar klorofil baik.", color: "text-secondary", bg: "bg-secondary-container", icon: "check_circle" },
-  { status: "Perlu Perhatian", desc: "Terdeteksi bercak cokelat kecil pada tepi daun. Kemungkinan kekurangan magnesium. Rekomendasi: tambahkan pupuk dolomit.", color: "text-tertiary", bg: "bg-tertiary-fixed/20", icon: "warning" },
-  { status: "Sakit", desc: "Daun menguning (klorosis) di area luas. Kemungkinan serangan jamur Cercospora. Segera isolasi pohon dan aplikasikan fungisida nabati.", color: "text-error", bg: "bg-error-container", icon: "sick" },
+  { status: "Perlu Perhatian", desc: "Terdeteksi bercak cokelat kecil pada tepi daun. Kemungkinan kekurangan magnesium. Rekomendasi: tambahkan pupuk dolomit.", color: "text-tertiary", bg: "bg-tertiary-fixed/20", icon: "warning", refImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Magnesium_deficiency_in_tomato.jpg/320px-Magnesium_deficiency_in_tomato.jpg" },
+  { status: "Sakit", desc: "Daun menguning (klorosis) di area luas. Kemungkinan serangan jamur Cercospora. Segera isolasi pohon dan aplikasikan fungisida nabati.", color: "text-error", bg: "bg-error-container", icon: "sick", refImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Cercospora_leaf_spot_on_sugar_beet.jpg/320px-Cercospora_leaf_spot_on_sugar_beet.jpg" },
 ]
 
 export function KelolaKebun() {
@@ -205,8 +205,21 @@ export function KelolaKebun() {
                       <p className={`font-display-b2c text-lg ${analysisResult.color}`}>{analysisResult.status}</p>
                     </div>
                   </div>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">{analysisResult.desc}</p>
-                  <button onClick={() => { setPhotoPreview(null); setAnalysisResult(null); }} className="mt-3 text-xs font-label-caps text-primary hover:underline">
+                  <p className="text-sm text-on-surface-variant leading-relaxed mb-3">{analysisResult.desc}</p>
+                  
+                  {/* @ts-ignore - refImg is optional */}
+                  {analysisResult.refImg && (
+                    <div className="flex items-start gap-3 mt-4 pt-4 border-t border-outline-variant/10">
+                      {/* @ts-ignore */}
+                      <img src={analysisResult.refImg} alt="Referensi Penyakit" className="w-16 h-16 rounded-md object-cover border border-outline-variant/20" />
+                      <div>
+                        <p className="font-label-caps text-[10px] text-on-surface-variant uppercase">Referensi Visual Identik</p>
+                        <p className="text-xs text-on-surface-variant font-mono mt-1">Sistem menemukan kemiripan 94% dengan kasus ini di database.</p>
+                      </div>
+                    </div>
+                  )}
+
+                  <button onClick={() => { setPhotoPreview(null); setAnalysisResult(null); }} className="mt-4 text-xs font-label-caps text-primary hover:bg-surface-container-low w-full text-center p-2 rounded-lg border border-outline-variant/10 transition-colors">
                     Analisis foto lain →
                   </button>
                 </motion.div>

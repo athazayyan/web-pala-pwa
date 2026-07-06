@@ -1,17 +1,23 @@
 import { useAuth } from "../../context/AuthContext"
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
+import img1 from "../../assets/1.jpg"
+import img2 from "../../assets/2.jpg"
+import img3 from "../../assets/3.jpg"
+import img4 from "../../assets/4.jpeg"
+import img5 from "../../assets/5.jpg"
+import img6 from "../../assets/6.jpg"
 
 const productsByAhmad = [
-  { id: "p1", name: "Minyak Esensial Pala Murni", price: 185000, unit: "30ml", stock: 42, sold: 312, status: "Aktif", grade: "Grade Terapeutik", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDexw52erlBzdsXAMSGCOcUB2OigNuW2IOeK_oy8f_5Q1ziMlsvKC6SI94sZU_ocY7KHQBO0jrbiIvi7VqWEgstklXXTnIlT23ZqINrTbk8fqVPfHXz73nGHdF1l9g2CXA1NyV_bHl5lob3Lh_WwKhTqJ3pD0ip3XC9svTAAZsgwbyi1rzFmizg9p8OveyGS9V5k-YacGQQopOGQ6i9ew8E8yeujPBInLEyuv33pCNDSpSqHh3aA" },
-  { id: "p2", name: "Biji Pala Utuh Premium", price: 125000, unit: "250g", stock: 88, sold: 215, status: "Aktif", grade: "Grade ABCD", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIHaOtBYbH_nOL07TlXMt1PirltfQqdWzIe6scQgSkMKFGtwb9OLmnCfWJDpslbv-Zt62r2OScd8pmnuflFgkpoGLvZ96oOOl2kc-AAzuceTmRNfg_qVmAFmGzm6RfYjJhTb0FiX5G2b_dbxk39l0K7DclqOH-AT7cZto0B44NZo1M8BWiyukciHZ8vTXsEXQzrkgjwc5Oc2oxYOVahN3rP0UgYUODzsbIkQyZ2MUiWK4-Sc6bTA" },
-  { id: "p5", name: "Sirup Hangat Pala & Jahe", price: 145000, unit: "250ml", stock: 64, sold: 189, status: "Aktif", grade: "Artisanal", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBpUSYtu0kDjtM11U0f6bhDTOMI7ZWuMnGUTQZNzTN4MRIDJci5v2AIULlNPZaFnHA2as-ox5545dH7hJYyyLDFRBVC6nGij9HIGYNFDXfC4LK5bXBFTy6v8S8SVXEXAMzM-l2u4mTyIpKDNi5nPIe3khndRPLNddz0oGxdqIvjC9l4r8eWM_6qSA_PBlGDKS6xprN8WntWcKbshUwuNBNJyQR8KkriSeVC5ho2lupNak7pqJo69g" },
+  { id: "p1", name: "Minyak Esensial Pala Murni", price: 185000, unit: "30ml", stock: 42, sold: 312, status: "Aktif", grade: "Grade Terapeutik", img: img1 },
+  { id: "p2", name: "Biji Pala Utuh Premium", price: 125000, unit: "250g", stock: 88, sold: 215, status: "Aktif", grade: "Grade ABCD", img: img2 },
+  { id: "p5", name: "Sirup Hangat Pala & Jahe", price: 145000, unit: "250ml", stock: 64, sold: 189, status: "Aktif", grade: "Artisanal", img: img5 },
 ]
 
 const productsByPinkan = [
-  { id: "p3", name: "Fuli Kering Nusantara", price: 145000, unit: "100g", stock: 56, sold: 143, status: "Aktif", grade: "Aroma Tinggi", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBbWaPzl8hYaBl4KScRB7igtFrwiHE0Ff_bsdQRsP35hR1aruF2bTc1kY76iIGrXuw7-17IldiKVR-afKqvUOKY3pYG63qjAvOU6OZwTKD01dzivx0cDzL1V3lA6pR8yFP4GVYk25F7DlPnJzb4g0yVpnFGgXHQxTxd9f16a_WhuAJLLpF2XPK218tXxikx3j3GbTC2zyHlZRQCGKVrFCvlnA2vxr2S8pPCTo2fOeitnJoPQxFxaQ" },
-  { id: "p4", name: "Balm Malam Pala Premium", price: 185000, unit: "50ml", stock: 30, sold: 278, status: "Aktif", grade: "Grade Apoteker", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDefJb0D_YxwnTy9vrcBW6TNkUDjJTlvkWFDrgtoW-uq_dk5ZZdwhEZl_w8YXUTkwdZJvAt2ADr2Ag0E4p3E-QfhOJtHEI8FywXrfNiY_5_GUMQnomtsCWaZsR7815WVIaGFn8xfdxGIKiJACZWE7AVY7KbZpxxT9vH2ue97AyIEZ8UcjEG7yUTBvVxLSelnbcL17CoVpUh6dn7KZcK13YbGLT-oQLbByC3gxBnjnrTqI089hCIjQ" },
-  { id: "p6", name: "Paket Warisan Nusantara", price: 345000, unit: "Set", stock: 12, sold: 87, status: "Terbatas", grade: "Batch Terbatas", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXaEw9-WcDfEPVy1PomEZr1xW6FeG9sntoTPAHVk-Ln8SGnb_vY9h6Zf4npIDZB8J_RoOqBMDW9Gh67Ya3zjwGxj-XcERxvxB0BQ2_FlBoDXRZXTsJedv7SP6mKoKiAUiHgRoOiJxeCLfgXysUYo0cKGkpRbLQJOnZZJ15voiBJu_FO2R7n1RIS2jymquPtUsKbx60YrqaZo0Z5zwzScoTYKy-1EGuo43tT-Twil9ST0pYW8l_1A" },
+  { id: "p3", name: "Fuli Kering Nusantara", price: 145000, unit: "100g", stock: 56, sold: 143, status: "Aktif", grade: "Aroma Tinggi", img: img3 },
+  { id: "p4", name: "Balm Malam Pala Premium", price: 185000, unit: "50ml", stock: 30, sold: 278, status: "Aktif", grade: "Grade Apoteker", img: img4 },
+  { id: "p6", name: "Paket Warisan Nusantara", price: 345000, unit: "Set", stock: 12, sold: 87, status: "Terbatas", grade: "Batch Terbatas", img: img6 },
 ]
 
 const formatRp = (n: number) => `Rp ${n.toLocaleString("id-ID")}`

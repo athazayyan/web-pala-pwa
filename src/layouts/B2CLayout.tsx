@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useCart } from "../context/CartContext"
-
+import { ChatbotApoteker } from "../components/ChatbotApoteker"
 export function B2CLayout() {
   const location = useLocation()
   const { user, isLoggedIn, logout } = useAuth()
@@ -290,6 +290,8 @@ export function B2CLayout() {
           </>
         )}
       </AnimatePresence>
+
+      <ChatbotApoteker />
     </div>
   )
 }

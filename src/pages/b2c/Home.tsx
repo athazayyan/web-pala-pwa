@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
+import img1 from "../../assets/1.jpg"
+import img2 from "../../assets/2.jpg"
+import img5 from "../../assets/5.jpg"
 
 export function Home() {
   // Apoteker Rempah Chat
@@ -52,7 +55,7 @@ export function Home() {
           <div
             className="w-full h-full bg-cover bg-center"
             style={{
-              backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6zqMoS8kDbvYN4di4y3muAEG24VkgYKXnkWiELmiDK_oPtR9jnlN1EtUmzZz26oy7PpIVk80PyxeHR-ppfahVDuaEocIxg8AG2Q09jFoFmqcCn4aSY0XRWgAuFwrvrqNf1UGsmbTR4wIUMuZQUxWzWVFDMC9mkVC0rX0gz2XHAGkaI_Fhqw2xBxynPURG9Izjt42Ic9VS0hdfWEiF5CD-4DVlv4HZl15_hfu3osgEeILsw5Bz3Q')`
+              backgroundImage: `url('https://images.unsplash.com/photo-1518557351659-1bc0dfa5e55e?auto=format&fit=crop&w=1920&q=80')`
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
@@ -215,7 +218,7 @@ export function Home() {
                   alt="Asal Rempah Nusantara"
                   src={
                     activeStep === 1
-                      ? "https://lh3.googleusercontent.com/aida-public/AB6AXuBI7VbrlXql4q7qpsmji9JhzZs1bvulJyMnn9yHnfNOQ2jlb3_Qdc1NVAp4_ggibIcLtuhF4gopUE8-s0mWfMZNZAhIPnP4u2t45rmKb0ioXBx02-pQMmDHr1mr-DHbClXOhvjCSLySTHnSM1ptKPAZ_ujlRzD_uInD2g7qb2aq4Pu9QvfU1V2MHYn86-KXHVbEhsymaNeaQ86KJo2a4-VJOpdX8JcONm0FFYWwAqLbqWNmIFq0GQ"
+                      ? "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=600&q=80"
                       : activeStep === 2
                         ? "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80"
                         : "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80"
@@ -247,9 +250,9 @@ export function Home() {
             <div className="group cursor-pointer">
               <div className="aspect-[3/4] rounded-lg overflow-hidden mb-6 relative">
                 <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover scale-110 group-hover:scale-[1.15] transition-transform duration-700"
                   alt="Minyak Esensial Pala"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDexw52erlBzdsXAMSGCOcUB2OigNuW2IOeK_oy8f_5Q1ziMlsvKC6SI94sZU_ocY7KHQBO0jrbiIvi7VqWEgstklXXTnIlT23ZqINrTbk8fqVPfHXz73nGHdF1l9g2CXA1NyV_bHl5lob3Lh_WwKhTqJ3pD0ip3XC9svTAAZsgwbyi1rzFmizg9p8OveyGS9V5k-YacGQQopOGQ6i9ew8E8yeujPBInLEyuv33pCNDSpSqHh3aA"
+                  src={img1}
                 />
                 <div className="absolute top-4 right-4 bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-caps text-[10px]">
                   Grade Apoteker
@@ -264,9 +267,9 @@ export function Home() {
             <div className="group cursor-pointer">
               <div className="aspect-[3/4] rounded-lg overflow-hidden mb-6 relative">
                 <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover scale-110 group-hover:scale-[1.15] transition-transform duration-700"
                   alt="Sirup Pala Artisanal"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpUSYtu0kDjtM11U0f6bhDTOMI7ZWuMnGUTQZNzTN4MRIDJci5v2AIULlNPZaFnHA2as-ox5545dH7hJYyyLDFRBVC6nGij9HIGYNFDXfC4LK5bXBFTy6v8S8SVXEXAMzM-l2u4mTyIpKDNi5nPIe3khndRPLNddz0oGxdqIvjC9l4r8eWM_6qSA_PBlGDKS6xprN8WntWcKbshUwuNBNJyQR8KkriSeVC5ho2lupNak7pqJo69g"
+                  src={img5}
                 />
                 <div className="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-caps text-[10px]">
                   Artisanal
@@ -281,9 +284,9 @@ export function Home() {
             <div className="group cursor-pointer">
               <div className="aspect-[3/4] rounded-lg overflow-hidden mb-6 relative">
                 <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover scale-110 group-hover:scale-[1.15] transition-transform duration-700"
                   alt="Biji Pala Utuh"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLqhrhDU5BGkD03BvH5WbRiuw8IzCZjNPYEyiGdb5RfmmECC_8WiMC_b1LMiSK02iK1_ymT554xTNJ8L1MhEJOukYStauIeqSK8hWnRklQh9fg0Ufph08BJvnkvKSDs59R0W4FNYolxV2fFfX8ZVp_qWYH7Sb_AnT7B36s4NtEUCQyJ-CilrK6N7zSbgXhKdzv7Tu5N1uGv_u0iCompSdd6eH-USviiTY-A0J1zvkg7KRATzmlAQ"
+                  src={img2}
                 />
                 <div className="absolute top-4 right-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-caps text-[10px]">
                   Warisan
@@ -298,7 +301,7 @@ export function Home() {
       </section>
 
       {/* Keberlanjutan */}
-      <section className="py-24 px-6 md:px-margin-desktop bg-secondary text-on-secondary rounded-xl">
+      <section className="py-24 px-6 md:px-margin-desktop bg-secondary text-on-secondary rounded-t-xl">
         <div className="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="flex-1 space-y-8">
             <div>
@@ -357,7 +360,7 @@ export function Home() {
               <img
                 className="w-full aspect-square object-cover"
                 alt="Perkebunan Pala Indonesia"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG2WkTMMRSxOOP1s7tktaqBmCOoqQ624gzTL-zQcR1b-qxaK62tN8WVwdkWQ-bkdcK4aIbuokrPXtzYTJS4QRJxk1Kpays_A6Bptf--0hlUaW2XW0k5Edwh1MbR6kYHrnsxuFPgi6-39yV8nIW6DUNpQnokx_UZevOhUOPtn3RZOtmDSbYzhuolDBeziVBhTISiNsHfySyoxc2Bg4i0Jo43-MgmoFWEP-0intglGVzd6SEhCefqQ"
+                src={img2}
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/20" />
             </div>

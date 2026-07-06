@@ -4,10 +4,7 @@ import {
   Activity, 
   ShieldCheck, 
   Package, 
-  Camera, 
   CheckCircle2, 
-  AlertTriangle,
-  Loader2,
   Truck,
   Building,
   UserCheck,
@@ -15,9 +12,10 @@ import {
   Database,
   MapPin,
   Flame,
-  Award
+  Award,
+  TrendingUp,
+  LineChart
 } from "lucide-react"
-import { Button } from "../../components/ui/Button"
 
 // Types
 interface LogisticsModule {
@@ -52,66 +50,28 @@ export function Dashboard() {
     { id: "warehouse", name: "Humidity-Controlled Transit", description: "Storage in smart warehouses utilizing sensors to keep humidity strictly below 12%.", price: 310, active: true }
   ])
 
-  // Toggle logistics item
   const toggleLogistics = (id: string) => {
     setLogistics(prev => prev.map(item => item.id === id ? { ...item, active: !item.active } : item))
   }
 
-  // Calculate total logistics price
   const totalLogisticsPrice = logistics.reduce((acc, curr) => curr.active ? acc + curr.price : acc, 0)
 
-  // AI Scanner state
-  const [scanImage, setScanImage] = useState<string | null>(null)
-  const [scanState, setScanState] = useState<"idle" | "scanning" | "success">("idle")
-  const [diagnosticResult, setDiagnosticResult] = useState<any>(null)
-
-  const handleMockScan = (imageType: "healthy" | "diseased") => {
-    setScanState("scanning")
-    setScanImage(
-      imageType === "healthy"
-        ? "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=300&q=80"
-        : "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=300&q=80"
-    )
-
-    setTimeout(() => {
-      setScanState("success")
-      if (imageType === "healthy") {
-        setDiagnosticResult({
-          status: "healthy",
-          diagnosis: "Optimal Cultivar Health",
-          confidence: "98.4%",
-          recommendation: "Nutrient balance is perfect. Standard organic mulch application recommended at next rain cycle."
-        })
-      } else {
-        setDiagnosticResult({
-          status: "infected",
-          diagnosis: "Anthracnose (Colletotrichum)",
-          confidence: "94.2%",
-          recommendation: "Immediate isolation of affected stems. Apply 2% neem-garlic aqueous spray directly to surrounding leaves."
-        })
-      }
-    }, 2500)
-  }
-
   return (
-    <div className="space-y-8 bg-[#131412] text-[#f2f0ed] min-h-screen p-8 rounded-lg border border-outline/10 shadow-2xl relative overflow-hidden">
+    <div className="space-y-8 bg-[#fbf9f5] text-[#1b1c1a] min-h-screen p-8 font-body-md border-t-4 border-primary">
       
-      {/* Background Subtle Tech Grid Decor */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent pointer-events-none" />
-
       {/* Header Info */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-outline/20">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-outline-variant/30">
         <div>
-          <span className="text-xs uppercase tracking-widest font-mono text-tertiary-fixed-dim">TECHNICAL OPERATION CENTER</span>
-          <h2 className="text-3xl font-bold font-inter mt-1 tracking-tight text-white flex items-center gap-3">
-            Industrial Sourcing & Diagnostics
-            <span className="text-xs font-normal font-mono bg-secondary/20 text-secondary border border-secondary/30 px-2 py-0.5 rounded">
+          <span className="text-xs uppercase tracking-widest font-mono text-tertiary">TECHNICAL OPERATION CENTER</span>
+          <h2 className="text-3xl font-display-b2c mt-1 text-primary flex items-center gap-3 font-bold">
+            B2B Dashboard: Rantai Pasok
+            <span className="text-xs font-mono bg-secondary/10 text-secondary border border-secondary/30 px-2 py-0.5 rounded">
               GRADE ABCD
             </span>
           </h2>
         </div>
-        <div className="flex items-center gap-4 bg-[#1e201d] px-4 py-2 rounded border border-outline/20 font-mono text-sm">
-          <Database className="w-4 h-4 text-secondary animate-pulse" />
+        <div className="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded border border-outline-variant/30 font-mono text-sm">
+          <Database className="w-4 h-4 text-primary animate-pulse" />
           <span>LEDGER BLOCK: #8204-T</span>
         </div>
       </div>
@@ -119,22 +79,53 @@ export function Dashboard() {
       {/* Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { title: "Network Cooperatives", val: "14 Active", label: "Direct Sourced", icon: Building, color: "text-[#ffdeac]" },
-          { title: "Batch Yield Quality", val: "96.2%", label: "+1.4% Target", icon: ShieldCheck, color: "text-secondary" },
-          { title: "Humidity Margin", val: "11.4%", label: "Safe Level (<12%)", icon: Activity, color: "text-secondary" },
-          { title: "Contracts Pending", val: "3 Active", label: "Direct Shipments", icon: Package, color: "text-tertiary-fixed-dim" }
+          { title: "Koperasi Aktif", val: "14", label: "Direct Sourced", icon: Building, color: "text-tertiary" },
+          { title: "Kualitas Panen", val: "96.2%", label: "+1.4% Target", icon: ShieldCheck, color: "text-secondary" },
+          { title: "Margin Kelembaban", val: "11.4%", label: "Aman (<12%)", icon: Activity, color: "text-secondary" },
+          { title: "Kontrak Berjalan", val: "3", label: "Direct Shipments", icon: Package, color: "text-primary" }
         ].map((m, idx) => (
-          <div key={idx} className="bg-[#1e201d] border border-outline/20 p-5 rounded flex items-center justify-between hover:border-outline/40 transition-all">
+          <div key={idx} className="bg-surface-container-lowest border border-outline-variant/30 p-5 rounded-none flex items-center justify-between">
             <div>
               <p className="text-xs text-on-surface-variant font-mono uppercase tracking-wider">{m.title}</p>
-              <p className="text-2xl font-bold font-mono mt-1 text-white">{m.val}</p>
+              <p className="text-2xl font-bold font-mono mt-1 text-primary">{m.val}</p>
               <span className="text-[10px] text-on-surface-variant">{m.label}</span>
             </div>
-            <div className="w-10 h-10 bg-primary/20 rounded flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary/10 rounded flex items-center justify-center">
               <m.icon className={`w-5 h-5 ${m.color}`} />
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Market Price Trends */}
+      <div className="bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-none">
+        <h3 className="text-lg font-bold font-display-b2c text-primary flex items-center gap-2 mb-4">
+          <LineChart className="w-5 h-5 text-tertiary" />
+          Market Price Trends
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-4 border border-outline-variant/20 bg-surface-container-low flex flex-col justify-between">
+            <span className="font-mono text-xs text-on-surface-variant uppercase">Minyak Esensial (Liter)</span>
+            <div className="flex items-end justify-between mt-2">
+              <span className="font-bold text-2xl font-mono text-primary">$24.50</span>
+              <span className="flex items-center text-xs text-secondary font-mono"><TrendingUp className="w-3 h-3 mr-1" /> +2.4%</span>
+            </div>
+          </div>
+          <div className="p-4 border border-outline-variant/20 bg-surface-container-low flex flex-col justify-between">
+            <span className="font-mono text-xs text-on-surface-variant uppercase">Biji Pala Grade A (Kg)</span>
+            <div className="flex items-end justify-between mt-2">
+              <span className="font-bold text-2xl font-mono text-primary">$4.20</span>
+              <span className="flex items-center text-xs text-secondary font-mono"><TrendingUp className="w-3 h-3 mr-1" /> +1.1%</span>
+            </div>
+          </div>
+          <div className="p-4 border border-outline-variant/20 bg-surface-container-low flex flex-col justify-between">
+            <span className="font-mono text-xs text-on-surface-variant uppercase">Fuli Kering (Kg)</span>
+            <div className="flex items-end justify-between mt-2">
+              <span className="font-bold text-2xl font-mono text-primary">$18.90</span>
+              <span className="flex items-center text-xs text-tertiary font-mono"><TrendingUp className="w-3 h-3 mr-1" /> -0.5%</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Main Grid Content */}
@@ -144,19 +135,19 @@ export function Dashboard() {
         <div className="lg:col-span-2 space-y-8">
           
           {/* Dual Sourcing Panel */}
-          <div className="bg-[#1e201d] border border-outline/20 rounded p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-outline/10 pb-4">
-              <h3 className="text-lg font-bold font-inter text-white">Dual-Sourcing Path</h3>
-              <div className="flex bg-[#131412] p-1 rounded border border-outline/10">
+          <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-none p-6 space-y-6">
+            <div className="flex items-center justify-between border-b border-outline-variant/20 pb-4">
+              <h3 className="text-lg font-bold font-display-b2c text-primary">Dual-Sourcing Path</h3>
+              <div className="flex bg-surface-container-low p-1 rounded border border-outline-variant/20">
                 <button 
                   onClick={() => setSourcingPath("marketplace")}
-                  className={`px-4 py-1.5 rounded text-xs font-mono transition-all ${sourcingPath === "marketplace" ? "bg-primary text-white" : "text-on-surface-variant hover:text-white"}`}
+                  className={`px-4 py-1.5 rounded text-xs font-mono transition-all ${sourcingPath === "marketplace" ? "bg-primary text-white" : "text-on-surface-variant hover:text-primary"}`}
                 >
                   Pala Marketplace
                 </button>
                 <button 
                   onClick={() => setSourcingPath("partnerships")}
-                  className={`px-4 py-1.5 rounded text-xs font-mono transition-all ${sourcingPath === "partnerships" ? "bg-primary text-white" : "text-on-surface-variant hover:text-white"}`}
+                  className={`px-4 py-1.5 rounded text-xs font-mono transition-all ${sourcingPath === "partnerships" ? "bg-primary text-white" : "text-on-surface-variant hover:text-primary"}`}
                 >
                   Existing Networks
                 </button>
@@ -165,36 +156,34 @@ export function Dashboard() {
 
             {sourcingPath === "marketplace" ? (
               <div className="space-y-4">
-                <p className="text-sm text-on-surface-variant font-inter">
-                  Direct access to IG-certified cooperatives. Order laboratory samples prior to tonnage purchasing.
+                <p className="text-sm text-on-surface-variant font-body-md">
+                  Akses langsung ke koperasi tersertifikasi Indikasi Geografis (IG). Pesan sampel lab sebelum pembelian partai besar.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
                     { name: "Koperasi Pala Mawar", location: "Tapaktuan Hills", grade: "ABCD", moisture: "11%", price: "$4.20/kg" },
                     { name: "Sinar Atsiri Cooperative", location: "Kwala Hulu", grade: "Atsiri-Oil", purity: "99.8%", price: "$24.50/L" }
                   ].map((coop, idx) => (
-                    <div key={idx} className="border border-outline/10 p-4 rounded bg-[#131412] flex flex-col justify-between space-y-4 hover:border-primary/50 transition-all">
+                    <div key={idx} className="border border-outline-variant/20 p-4 bg-surface flex flex-col justify-between space-y-4 hover:border-primary/50 transition-all rounded-none">
                       <div>
                         <div className="flex justify-between items-start">
-                          <span className="text-xs font-mono text-secondary">● IG-CERTIFIED</span>
-                          <span className="text-xs bg-primary/40 px-2 py-0.5 rounded text-white font-mono">{coop.price}</span>
+                          <span className="text-xs font-mono text-secondary font-bold">● IG-CERTIFIED</span>
+                          <span className="text-xs bg-primary/10 px-2 py-0.5 rounded text-primary font-mono font-bold">{coop.price}</span>
                         </div>
-                        <h4 className="font-bold text-white mt-2">{coop.name}</h4>
+                        <h4 className="font-bold text-primary mt-2">{coop.name}</h4>
                         <div className="flex items-center gap-1 text-xs text-on-surface-variant mt-1 font-mono">
-                          <MapPin className="w-3 h-3 text-[#ffba38]" />
+                          <MapPin className="w-3 h-3 text-tertiary" />
                           {coop.location}
                         </div>
                       </div>
-                      <div className="flex justify-between items-center pt-2 border-t border-outline/5">
+                      <div className="flex justify-between items-center pt-2 border-t border-outline-variant/10">
                         <span className="text-xs text-on-surface-variant font-mono">Grade: {coop.grade}</span>
-                        <Button 
-                          variant="industrial" 
-                          size="sm"
+                        <button 
                           onClick={() => setOrderedCoop(coop.name)}
-                          className="text-xs h-8"
+                          className="bg-primary text-white text-xs px-3 py-1.5 hover:bg-primary-container hover:text-primary transition-colors"
                         >
                           Order Sample
-                        </Button>
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -202,23 +191,23 @@ export function Dashboard() {
               </div>
             ) : (
               <div className="space-y-4">
-                <p className="text-sm text-on-surface-variant font-inter">
-                  Managing your own pre-existing farmer networks and verifying operational transparency.
+                <p className="text-sm text-on-surface-variant">
+                  Manajemen jaringan petani yang sudah ada dan pantau transparansi operasional.
                 </p>
                 <div className="space-y-3">
                   {[
                     { id: "net-1", name: "South Aceh Organic Growers Group", locations: "12 Farms", status: "Verified" },
                     { id: "net-2", name: "Kuala Batee Cooperatives", locations: "8 Farms", status: "Inspected" }
                   ].map((net, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 border border-outline/10 rounded bg-[#131412]">
+                     <div key={i} className="flex items-center justify-between p-4 border border-outline-variant/20 bg-surface rounded-none">
                       <div className="flex items-center gap-3">
                         <UserCheck className="w-5 h-5 text-secondary" />
                         <div>
-                          <p className="font-semibold text-white">{net.name}</p>
+                          <p className="font-semibold text-primary">{net.name}</p>
                           <span className="text-xs text-on-surface-variant font-mono">{net.locations}</span>
                         </div>
                       </div>
-                      <span className="text-xs bg-secondary/10 border border-secondary/20 text-secondary px-3 py-1 rounded">
+                      <span className="text-xs bg-secondary/10 border border-secondary/20 text-secondary font-bold px-3 py-1 rounded">
                         {net.status}
                       </span>
                     </div>
@@ -229,11 +218,11 @@ export function Dashboard() {
           </div>
 
           {/* Gamified Farmer HUD */}
-          <div className="bg-[#1e201d] border border-outline/20 rounded p-6 space-y-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-outline/10 pb-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-none p-6 space-y-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-outline-variant/20 pb-4">
               <div>
-                <h3 className="text-lg font-bold font-inter text-white flex items-center gap-2">
-                  <Award className="w-5 h-5 text-[#ffba38]" />
+                <h3 className="text-lg font-bold font-display-b2c text-primary flex items-center gap-2">
+                  <Award className="w-5 h-5 text-tertiary" />
                   Farmer Performance HUD
                 </h3>
                 <p className="text-xs text-on-surface-variant mt-0.5">Empowering community-driven agroforestry</p>
@@ -243,7 +232,7 @@ export function Dashboard() {
                   <button
                     key={f.id}
                     onClick={() => setSelectedFarmerId(f.id)}
-                    className={`px-3 py-1 rounded text-xs font-mono border transition-all ${selectedFarmerId === f.id ? "bg-secondary text-white border-secondary" : "bg-[#131412] text-on-surface-variant border-outline/20 hover:text-white"}`}
+                    className={`px-3 py-1 text-xs font-mono border transition-all ${selectedFarmerId === f.id ? "bg-primary text-white border-primary" : "bg-surface text-on-surface-variant border-outline-variant/30 hover:text-primary"}`}
                   >
                     Farmer #{f.id}
                   </button>
@@ -252,48 +241,45 @@ export function Dashboard() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-              {/* Farmer Bio / Level */}
-              <div className="md:col-span-2 space-y-4 bg-[#131412] p-4 rounded border border-outline/10">
+              <div className="md:col-span-2 space-y-4 bg-surface p-4 border border-outline-variant/20">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded bg-primary/40 flex items-center justify-center font-bold text-white border border-outline/20">
+                  <div className="w-12 h-12 rounded-none bg-primary/10 flex items-center justify-center font-bold text-primary border border-primary/20">
                     {activeFarmer.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white leading-tight">{activeFarmer.name}</h4>
+                    <h4 className="font-bold text-primary leading-tight">{activeFarmer.name}</h4>
                     <span className="text-xs text-on-surface-variant font-mono">{activeFarmer.location}</span>
                   </div>
                 </div>
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-mono">
                     <span className="text-on-surface-variant">Level {activeFarmer.level} Grower</span>
-                    <span className="text-[#ffba38]">{activeFarmer.xp} / {activeFarmer.nextLevelXp} XP</span>
+                    <span className="text-tertiary font-bold">{activeFarmer.xp} / {activeFarmer.nextLevelXp} XP</span>
                   </div>
-                  {/* XP Bar */}
-                  <div className="h-2 bg-[#1e201d] rounded-full overflow-hidden border border-outline/10">
+                  <div className="h-2 bg-surface-container-high rounded-none overflow-hidden border border-outline-variant/20">
                     <div 
-                      className="h-full bg-gradient-to-r from-secondary to-[#ffba38]"
+                      className="h-full bg-secondary"
                       style={{ width: `${(activeFarmer.xp / activeFarmer.nextLevelXp) * 100}%` }}
                     />
                   </div>
                 </div>
                 <div className="pt-2">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-mono bg-[#604100]/20 text-[#ffdeac] border border-[#604100]/40 px-2 py-1 rounded">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-1">
                     <Flame className="w-3.5 h-3.5" />
                     {activeFarmer.badge}
                   </span>
                 </div>
               </div>
 
-              {/* Farmer RPG stats */}
               <div className="md:col-span-3 grid grid-cols-3 gap-4 items-center">
                 {[
                   { label: "Yield Quality", value: activeFarmer.yield, desc: "Lab purity rate" },
                   { label: "Efficiency", value: activeFarmer.efficiency, desc: "Fulfillment lead" },
                   { label: "Soil Resilience", value: activeFarmer.soil, desc: "Organic matter Index" }
                 ].map((stat, idx) => (
-                  <div key={idx} className="bg-[#131412] p-4 rounded border border-outline/10 text-center hover:border-secondary/30 transition-all">
+                  <div key={idx} className="bg-surface p-4 border border-outline-variant/20 text-center hover:border-primary/30 transition-all">
                     <p className="text-xs text-on-surface-variant font-mono">{stat.label}</p>
-                    <p className="text-xl font-bold font-mono text-white mt-1">{stat.value}</p>
+                    <p className="text-xl font-bold font-mono text-primary mt-1">{stat.value}</p>
                     <p className="text-[9px] text-on-surface-variant mt-1 leading-tight">{stat.desc}</p>
                   </div>
                 ))}
@@ -302,87 +288,44 @@ export function Dashboard() {
           </div>
         </div>
 
-        {/* Right Column: AI Disease Scanner & Logistics Config */}
+        {/* Right Column: Logistics Config & Live Logistics Status */}
         <div className="space-y-8">
           
-          {/* AI Plant Disease Scanner */}
-          <div className="bg-[#1e201d] border border-outline/20 rounded p-6 space-y-6">
-            <div>
-              <h3 className="text-lg font-bold font-inter text-white flex items-center gap-2">
-                <Camera className="w-5 h-5 text-secondary" />
-                AI Plant Disease Scanner
-              </h3>
-              <p className="text-xs text-on-surface-variant mt-0.5">Instant crop diagnostic computer vision</p>
+          {/* Live Logistics */}
+          <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-none p-6 space-y-6">
+             <div className="flex items-center justify-between border-b border-outline-variant/20 pb-4">
+              <div>
+                <h3 className="text-lg font-bold font-display-b2c text-primary flex items-center gap-2">
+                  <Truck className="w-5 h-5 text-secondary" />
+                  Live Logistics Status
+                </h3>
+              </div>
             </div>
-
-            <div className="bg-[#131412] border border-outline/20 aspect-video rounded relative overflow-hidden flex items-center justify-center">
-              {scanState === "idle" && (
-                <div className="text-center p-6 space-y-4">
-                  <Camera className="w-8 h-8 mx-auto text-on-surface-variant opacity-60" />
-                  <p className="text-xs text-on-surface-variant max-w-[200px]">Simulate crop photo diagnosis</p>
-                  <div className="flex gap-2 justify-center">
-                    <Button variant="secondary" size="sm" onClick={() => handleMockScan("healthy")}>
-                      Healthy Leaf
-                    </Button>
-                    <Button variant="industrial" size="sm" onClick={() => handleMockScan("diseased")}>
-                      Infected Leaf
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-              {scanState === "scanning" && (
-                <div className="text-center space-y-4">
-                  {/* Mock Scanning Grid Animation */}
-                  <div className="absolute inset-0 pointer-events-none flex flex-col justify-between">
-                    <div className="w-full h-[1px] bg-secondary/50 animate-bounce" />
-                  </div>
-                  {scanImage && (
-                    <img src={scanImage} alt="Scanning" className="absolute inset-0 w-full h-full object-cover opacity-30" />
-                  )}
-                  <Loader2 className="w-8 h-8 text-secondary animate-spin mx-auto relative z-10" />
-                  <p className="text-xs text-secondary font-mono animate-pulse relative z-10">ANALYZING LEAF LAYER...</p>
-                </div>
-              )}
-
-              {scanState === "success" && scanImage && (
-                <div className="absolute inset-0">
-                  <img src={scanImage} alt="Scanned Leaf" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-[#131412]/80 flex flex-col justify-end p-4">
-                    <div className="flex items-center justify-between text-xs border-b border-outline/20 pb-2 mb-2">
-                      <span className="font-mono text-on-surface-variant">DIAGNOSIS COMPLETE</span>
-                      <button 
-                        onClick={() => setScanState("idle")}
-                        className="text-secondary hover:underline font-mono"
-                      >
-                        Reset
-                      </button>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        {diagnosticResult.status === "healthy" ? (
-                          <CheckCircle2 className="w-4 h-4 text-secondary" />
-                        ) : (
-                          <AlertTriangle className="w-4 h-4 text-[#ffba38]" />
-                        )}
-                        <h4 className="font-bold text-white text-sm">{diagnosticResult.diagnosis}</h4>
-                      </div>
-                      <p className="text-[11px] text-on-surface-variant mt-1 leading-relaxed">
-                        {diagnosticResult.recommendation}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
+            
+            <div className="relative pl-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-[-8px] before:w-[2px] before:bg-secondary/30">
+               {[
+                { step: "Ekstraksi Selesai", detail: "Fasilitas Atsiri Tapaktuan", active: true },
+                { step: "SGS Lab Clearance", detail: "Kadar Myristicin >9.8%", active: true },
+                { step: "Transit Gudang", detail: "Kelembaban dikontrol 11.4%", active: true },
+                { step: "Pelabuhan Malahayati", detail: "Menunggu Kapal Kargo", active: false }
+              ].map((milestone, idx) => (
+                 <div key={idx} className="relative mb-6 last:mb-0">
+                    <span className={`absolute -left-6 w-4 h-4 rounded-full flex items-center justify-center font-bold text-xs ${milestone.active ? 'bg-secondary text-white ring-4 ring-secondary/20' : 'bg-surface-container border border-outline-variant'}`}>
+                      {milestone.active && <CheckCircle2 className="w-3 h-3" />}
+                    </span>
+                    <h5 className={`font-bold font-mono text-sm ${milestone.active ? 'text-primary' : 'text-on-surface-variant'}`}>{milestone.step}</h5>
+                    <p className="text-xs text-on-surface-variant mt-1">{milestone.detail}</p>
+                 </div>
+              ))}
             </div>
           </div>
 
           {/* Logistics Configurator */}
-          <div className="bg-[#1e201d] border border-outline/20 rounded p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-outline/10 pb-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-none p-6 space-y-6">
+            <div className="flex items-center justify-between border-b border-outline-variant/20 pb-4">
               <div>
-                <h3 className="text-lg font-bold font-inter text-white flex items-center gap-2">
-                  <Truck className="w-5 h-5 text-secondary" />
+                <h3 className="text-lg font-bold font-display-b2c text-primary flex items-center gap-2">
+                  <Package className="w-5 h-5 text-secondary" />
                   Modular Logistics
                 </h3>
                 <p className="text-xs text-on-surface-variant mt-0.5">Checkbox pipeline configuration</p>
@@ -394,19 +337,19 @@ export function Dashboard() {
                 <div 
                   key={item.id}
                   onClick={() => toggleLogistics(item.id)}
-                  className={`p-3 rounded border transition-all cursor-pointer select-none ${item.active ? "border-secondary/40 bg-secondary/5" : "border-outline/10 bg-[#131412]"}`}
+                  className={`p-3 border transition-all cursor-pointer select-none ${item.active ? "border-secondary bg-secondary/5" : "border-outline-variant/30 bg-surface"}`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <input 
                         type="checkbox" 
                         checked={item.active} 
-                        onChange={() => {}} // handled by div onClick
-                        className="rounded border-outline/30 text-secondary focus:ring-0 focus:ring-offset-0 w-4 h-4" 
+                        onChange={() => {}} 
+                        className="rounded-sm border-outline-variant/30 text-secondary focus:ring-0 w-4 h-4" 
                       />
-                      <span className="font-medium text-sm text-white">{item.name}</span>
+                      <span className="font-bold text-sm text-primary">{item.name}</span>
                     </div>
-                    <span className="text-xs font-mono text-[#ffba38]">${item.price}/MT</span>
+                    <span className="text-xs font-mono text-tertiary font-bold">${item.price}/MT</span>
                   </div>
                   <p className="text-[10px] text-on-surface-variant mt-1 leading-relaxed">
                     {item.description}
@@ -415,81 +358,51 @@ export function Dashboard() {
               ))}
             </div>
 
-            <div className="border-t border-outline/20 pt-4 flex items-center justify-between">
+            <div className="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
               <div>
-                <p className="text-xs text-on-surface-variant uppercase tracking-wider font-mono">ESTIMATED LOGISTICS FEE</p>
-                <p className="text-2xl font-bold font-mono text-white mt-1">${totalLogisticsPrice}<span className="text-xs text-on-surface-variant">/MT</span></p>
+                <p className="text-xs text-on-surface-variant uppercase tracking-wider font-mono">ESTIMATED FEE</p>
+                <p className="text-2xl font-bold font-mono text-primary mt-1">${totalLogisticsPrice}<span className="text-xs text-on-surface-variant">/MT</span></p>
               </div>
-              <Button variant="industrial" className="flex items-center gap-2 h-10">
+              <button className="flex items-center gap-2 bg-primary text-white font-mono px-4 h-10 hover:bg-primary-container hover:text-primary transition-colors text-sm">
                 Lock Quote
                 <ChevronRight className="w-4 h-4" />
-              </Button>
+              </button>
             </div>
           </div>
 
-        </div>
-
-      </div>
-
-      {/* Traceability Feed */}
-      <div className="bg-[#1e201d] border border-outline/20 rounded p-6">
-        <h3 className="text-lg font-bold font-inter text-white mb-6">{"Traceability Timeline (Tapaktuan ➔ Export)"}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-          {[
-            { step: "Harvesting & Extraction", detail: "Cooperatives tap raw nutmeg from South Aceh hillside. Steam-distilled in local Atsiri facility.", date: "Completed Jul 02", active: true },
-            { step: "SGS Lab Clearance", detail: "Myristicin purity rated at 9.8%, fully safe for global phytosanitary custom certifications.", date: "Completed Jul 04", active: true },
-            { step: "Malahayati Cargo loading", detail: "Sealed cargo under strict humidity control. Ready for ocean port freight container loading.", date: "Transit Pending", active: false }
-          ].map((milestone, idx) => (
-            <div key={idx} className="bg-[#131412] border border-outline/10 p-5 rounded relative flex flex-col justify-between space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-on-surface-variant">MILESTONE 0{idx + 1}</span>
-                <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${milestone.active ? 'bg-secondary/20 text-secondary' : 'bg-primary/20 text-on-primary-container'}`}>
-                  {milestone.active ? 'VERIFIED' : 'PENDING'}
-                </span>
-              </div>
-              <div>
-                <h4 className="font-bold text-white text-sm">{milestone.step}</h4>
-                <p className="text-xs text-on-surface-variant mt-1.5 leading-relaxed">{milestone.detail}</p>
-              </div>
-              <div className="text-[10px] text-[#ffba38] font-mono border-t border-outline/5 pt-2">
-                {milestone.date}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
       {/* Sample Ordered Modal Popup overlay */}
       <AnimatePresence>
         {orderedCoop && (
-          <div className="fixed inset-0 z-50 bg-[#131412]/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 bg-[#1b1c1a]/60 backdrop-blur-md flex items-center justify-center p-4">
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-[#1e201d] border border-outline/20 rounded max-w-md w-full p-6 text-center space-y-6 shadow-2xl relative"
+              className="bg-surface-container-lowest border border-outline-variant/30 rounded-none max-w-md w-full p-8 text-center space-y-6 shadow-2xl relative"
             >
-              <div className="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mx-auto text-on-secondary-container">
+              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto text-secondary">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-inter text-white">Sample Order Successful</h3>
-                <p className="text-sm text-on-surface-variant mt-2 font-inter">
-                  We have dispatched a lab sample order request to <strong>{orderedCoop}</strong>.
+                <h3 className="text-xl font-bold font-display-b2c text-primary">Sample Order Berhasil</h3>
+                <p className="text-sm text-on-surface-variant mt-2 font-body-md">
+                  Permintaan sampel lab telah dikirimkan ke <strong>{orderedCoop}</strong>.
                 </p>
-                <div className="bg-[#131412] p-4 rounded border border-outline/10 mt-4 text-left space-y-2">
-                  <p className="text-xs font-mono text-on-surface-variant">TRACKING: <span className="text-white">#ATH-7729-QC</span></p>
-                  <p className="text-xs font-mono text-on-surface-variant">VOLUME: <span className="text-white">250g Pouch (Whole seed / Extract)</span></p>
-                  <p className="text-xs font-mono text-on-surface-variant">LEDGER REGISTRY: <span className="text-secondary">0x8a92...fc9a</span></p>
+                <div className="bg-surface p-4 border border-outline-variant/20 mt-4 text-left space-y-2">
+                  <p className="text-xs font-mono text-on-surface-variant">TRACKING: <span className="text-primary font-bold">#ATH-7729-QC</span></p>
+                  <p className="text-xs font-mono text-on-surface-variant">VOLUME: <span className="text-primary font-bold">250g Pouch (Whole seed)</span></p>
+                  <p className="text-xs font-mono text-on-surface-variant">LEDGER REGISTRY: <span className="text-secondary font-bold">0x8a92...fc9a</span></p>
                 </div>
               </div>
-              <Button 
-                variant="default" 
+              <button 
                 onClick={() => setOrderedCoop(null)}
-                className="w-full"
+                className="w-full bg-primary text-white py-3 hover:bg-primary-container hover:text-primary transition-colors font-bold font-mono"
               >
                 Close Panel
-              </Button>
+              </button>
             </motion.div>
           </div>
         )}

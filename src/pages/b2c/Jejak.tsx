@@ -50,7 +50,7 @@ export function Jejak() {
         <div className="absolute inset-0 z-0">
           <div 
             className="w-full h-full bg-cover bg-center brightness-75 transition-transform duration-1000" 
-            style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAt3Cbp5MiB8cb_lBdJTUTmYNZzVVhee4o8lOJ6xZTOJp-AzaRdOtmnfIMXLB2HKYJdSClCNQG2k17sbGIkZoBgaE1D7lwj5jHfGGPwncuj771feE-GNJOLyimn-9FRSxvGCzWdPz1Iop7JONPD7sWFcBcsvtiwOS0IHP3X4WRPJ7Z0UGdGKqEp_TLp_khEFd4pgZYHZ1QUIpCiGTkiQSI5FLcIBgTFfzns-pIpK8ciDtc4zywXsA')` }}
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1518557351659-1bc0dfa5e55e?auto=format&fit=crop&w=1920&q=80')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-85" />
         </div>
@@ -94,7 +94,7 @@ export function Jejak() {
               <img 
                 className="w-full h-full object-cover" 
                 alt="Nutmeg Harvest split aril"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK85RPQnfoB_xCpvGyMqDVqoLwph5cmMCFGy-uCCAhjIOInUnKrqPQ-6UcyWQOquGOlbp36dkrJmr63hRe_wNfCSnFDaz5mPUxSiXUsYjBd0AXx9ZQS1ChfDXAippHP9drRxfifMWW8x_21ZzQSSzbqJM-dgPTcIANBaisAKwLd6ozDfaaxXrwoNzqPYfJ4Vx-Ucl7uoUN2CiJikXEoZdugHmlAM31zhByYHADf7IrlcAyGaYfBQ" 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Myristica_fragrans_fruit_split.jpg/800px-Myristica_fragrans_fruit_split.jpg" 
               />
             </div>
             <div className="absolute -bottom-8 -left-8 glass-panel p-8 rounded-xl shadow-lg max-w-xs">
@@ -167,7 +167,7 @@ export function Jejak() {
               <img 
                 className="w-16 h-16 rounded-full object-cover border-2 border-tertiary shrink-0" 
                 alt="Portrait Bapak Syahrul"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaXt64IB2ubM_wUash5fD0D21OolvgzFS0NwUQWbrdPgX9BMOZ_gKACJ-v-9Fr3co_nL0GLPpL_rigsH4t17m7NErlQZOxJXWTNAWuMAhfbRd7o486UTp3XuPJ3o8quqrEpqfh3TE3i2fWda8GNlxm6vR1c-wNGc84J9WHVRDDgE3ZPxvhTUoQrTda9a8zWU4ItFIPM1VryxrBHZM3GI1XRao42tuxy3UqbUsgsGssreQxEFV0ww" 
+                src="https://images.unsplash.com/photo-1595844730298-b960fad974ea?auto=format&fit=crop&w=300&q=80" 
               />
               <div>
                 <h4 className="font-display-b2c text-lg text-primary">Bapak Syahrul</h4>
@@ -265,28 +265,28 @@ export function Jejak() {
                 name: "Minyak Esensial (30ml)", 
                 grade: "Grade Terapeutik", 
                 price: "Rp 185.000",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDPQucQgNK9XOIqfh-X0N8AhK4Z6lnN4NEAYJQVjzFN6e6s1Bi2C6YiDfLKyh9grFsjqe9LsJufaOmk-Ea4hdx1ys68kvhOSJx2GD4Ws4SkuaSHrhF47l2PfHrVdF9iFrmQaRAY0WeOQCxfCSDXKiXBS1DAWmrBwruSAdAlTcbxpTL_7pbWAwY3vbp9QA4Wf3odPpq916dnnZ0RT1Og-zaFNljTPJXb915XUxc09HgBmZUL9nZxSg",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Essential_oil_bottles.jpg/800px-Essential_oil_bottles.jpg",
                 shift: false 
               },
               { 
                 name: "Biji Utuh (250g)", 
                 grade: "Grade ABCD", 
                 price: "Rp 125.000",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIHaOtBYbH_nOL07TlXMt1PirltfQqdWzIe6scQgSkMKFGtwb9OLmnCfWJDpslbv-Zt62r2OScd8pmnuflFgkpoGLvZ96oOOl2kc-AAzuceTmRNfg_qVmAFmGzm6RfYjJhTb0FiX5G2b_dbxk39l0K7DclqOH-AT7cZto0B44NZo1M8BWiyukciHZ8vTXsEXQzrkgjwc5Oc2oxYOVahN3rP0UgYUODzsbIkQyZ2MUiWK4-Sc6bTA",
+                img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Nutmeg.jpg",
                 shift: true 
               },
               { 
                 name: "Fuli Kering (100g)", 
                 grade: "Aroma Tinggi", 
                 price: "Rp 145.000",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBbWaPzl8hYaBl4KScRB7igtFrwiHE0Ff_bsdQRsP35hR1aruF2bTc1kY76iIGrXuw7-17IldiKVR-afKqvUOKY3pYG63qjAvOU6OZwTKD01dzivx0cDzL1V3lA6pR8yFP4GVYk25F7DlPnJzb4g0yVpnFGgXHQxTxd9f16a_WhuAJLLpF2XPK218tXxikx3j3GbTC2zyHlZRQCGKVrFCvlnA2vxr2S8pPCTo2fOeitnJoPQxFxaQ",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Mace_%28spice%29.jpg/800px-Mace_%28spice%29.jpg",
                 shift: false 
               },
               { 
                 name: "Paket Warisan", 
                 grade: "Batch Terbatas", 
                 price: "Rp 345.000",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXaEw9-WcDfEPVy1PomEZr1xW6FeG9sntoTPAHVk-Ln8SGnb_vY9h6Zf4npIDZB8J_RoOqBMDW9Gh67Ya3zjwGxj-XcERxvxB0BQ2_FlBoDXRZXTsJedv7SP6mKoKiAUiHgRoOiJxeCLfgXysUYo0cKGkpRbLQJOnZZJ15voiBJu_FO2R7n1RIS2jymquPtUsKbx60YrqaZo0Z5zwzScoTYKy-1EGuo43tT-Twil9ST0pYW8l_1A",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Spices_in_an_Indian_market.jpg/800px-Spices_in_an_Indian_market.jpg",
                 shift: true 
               }
             ].map((p, idx) => (
@@ -394,7 +394,7 @@ export function Jejak() {
                 <img 
                   className="w-14 h-14 rounded-full object-cover border" 
                   alt="Syahrul Profile"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaXt64IB2ubM_wUash5fD0D21OolvgzFS0NwUQWbrdPgX9BMOZ_gKACJ-v-9Fr3co_nL0GLPpL_rigsH4t17m7NErlQZOxJXWTNAWuMAhfbRd7o486UTp3XuPJ3o8quqrEpqfh3TE3i2fWda8GNlxm6vR1c-wNGc84J9WHVRDDgE3ZPxvhTUoQrTda9a8zWU4ItFIPM1VryxrBHZM3GI1XRao42tuxy3UqbUsgsGssreQxEFV0ww" 
+                  src="https://images.unsplash.com/photo-1595844730298-b960fad974ea?auto=format&fit=crop&w=300&q=80" 
                 />
                 <div>
                   <h4 className="font-display-b2c font-bold text-primary">Kebun Bapak Syahrul</h4>
