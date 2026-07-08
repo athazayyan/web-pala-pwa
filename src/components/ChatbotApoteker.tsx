@@ -75,7 +75,7 @@ export function ChatbotApoteker() {
                     <Bot size={24} className="text-[#e7bdb1]" />
                   </div>
                   <div>
-                    <h3 className="font-bold font-serif">Apoteker Rempah</h3>
+                    <h3 className="font-bold font-serif">Asisten Rempah</h3>
                     <p className="text-xs text-[#d4ada1]">Asisten Pribadi Anda</p>
                   </div>
                 </div>
