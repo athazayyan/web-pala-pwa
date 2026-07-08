@@ -175,7 +175,7 @@ export function Services() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      text: `"Selamat datang. Saya adalah Apoteker Rempah. Ceritakan kebutuhan atau keluhan Anda, dan saya akan merekomendasikan produk terbaik dari koleksi PalaMart."`,
+      text: `"Selamat datang. Saya adalah Asisten Rempah. Ceritakan kebutuhan atau keluhan Anda, dan saya akan merekomendasikan produk terbaik dari koleksi PalaMart."`,
       isUser: false,
     },
   ])
@@ -506,7 +506,7 @@ export function Services() {
                   <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>
                 </div>
                 <div>
-                  <h2 className="font-display-b2c text-sm text-primary leading-tight">Apoteker Rempah AI</h2>
+                  <h2 className="font-display-b2c text-sm text-primary leading-tight">Asisten Rempah AI</h2>
                   <p className="text-[10px] text-on-surface-variant font-mono">Rekomendasi produk berbasis kearifan rempah</p>
                 </div>
                 <button
@@ -582,7 +582,7 @@ export function Services() {
                       <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
                     </div>
                     <div className="bg-surface-container-low border border-outline-variant/20 rounded-2xl rounded-tl-sm px-4 py-3 text-xs font-mono text-on-surface-variant">
-                      Apoteker sedang menganalisis kebutuhan Anda...
+                      Asisten sedang menganalisis kebutuhan Anda...
                     </div>
                   </div>
                 )}
