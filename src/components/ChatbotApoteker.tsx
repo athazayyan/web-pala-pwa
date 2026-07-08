@@ -5,7 +5,7 @@ import { MessageCircle, X, Send, Bot } from "lucide-react"
 export function ChatbotApoteker() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { id: 1, text: "Selamat datang. Saya Apoteker Rempah. Bagaimana saya bisa membantu keluhan Anda hari ini?", sender: "bot" }
+    { id: 1, text: "Selamat datang. Saya Asisten Rempah. Bagaimana saya bisa membantu keluhan Anda hari ini?", sender: "bot" }
   ])
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
@@ -53,7 +53,7 @@ export function ChatbotApoteker() {
               
               {/* Tooltip */}
               <div className="absolute right-full mr-4 bg-[#fbf9f5] text-[#1b1c1a] px-3 py-1 rounded-md text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition shadow-md border border-[#eae8e4] font-medium pointer-events-none">
-                Tanya Apoteker Rempah
+                Tanya Asisten Rempah
               </div>
             </motion.button>
           )}
@@ -75,7 +75,7 @@ export function ChatbotApoteker() {
                     <Bot size={24} className="text-[#e7bdb1]" />
                   </div>
                   <div>
-                    <h3 className="font-bold font-serif">Apoteker Rempah</h3>
+                    <h3 className="font-bold font-serif">Asisten Rempah</h3>
                     <p className="text-xs text-[#d4ada1]">Asisten Pribadi Anda</p>
                   </div>
                 </div>
