@@ -5,7 +5,7 @@ import { MessageCircle, X, Send, Bot } from "lucide-react"
 export function ChatbotApoteker() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { id: 1, text: "Selamat datang. Saya Apoteker Rempah. Bagaimana saya bisa membantu keluhan Anda hari ini?", sender: "bot" }
+    { id: 1, text: "Selamat datang. Saya Asisten Rempah. Bagaimana saya bisa membantu keluhan Anda hari ini?", sender: "bot" }
   ])
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
