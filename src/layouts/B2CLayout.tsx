@@ -34,6 +34,9 @@ export function B2CLayout() {
           <div className="hidden md:flex gap-8">
             <Link className={getLinkClass("/")} to="/">Beranda</Link>
             <Link className={getLinkClass("/services")} to="/services">Marketplace</Link>
+            <Link className={getLinkClass("/pre-order")} to="/pre-order">
+              <span className="flex items-center gap-1.5">Pre-Order<span className="material-symbols-outlined text-sm">schedule</span></span>
+            </Link>
             <Link className={getLinkClass("/about")} to="/about">Dampak</Link>
           </div>
         </div>
@@ -197,6 +200,16 @@ export function B2CLayout() {
                   }`}
                 >
                   Marketplace
+                </Link>
+                <Link
+                  to="/pre-order"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`font-label-caps text-[15px] tracking-wide py-2 border-b border-outline-variant/10 flex items-center gap-2 ${
+                    location.pathname === "/pre-order" ? "text-primary font-bold" : "text-on-surface-variant"
+                  }`}
+                >
+                  <span>Pre-Order</span>
+                  <span className="material-symbols-outlined text-sm">schedule</span>
                 </Link>
                 <Link
                   to="/about"

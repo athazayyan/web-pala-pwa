@@ -17,6 +17,7 @@ import { Finansial } from "./pages/penjual/Finansial"
 import { KelolaKebun } from "./pages/penjual/KelolaKebun"
 import { CartProvider } from "./context/CartContext"
 import { Cart } from "./pages/b2c/Cart"
+import { PreOrder } from "./pages/b2c/PreOrder"
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route path="services" element={<Services />} />
             <Route path="produk/:id" element={<ProductDetail />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="pre-order" element={<PreOrder />} />
             <Route path="about" element={<div className="p-8 text-center text-on-surface">Dampak — Segera Hadir</div>} />
           </Route>
 
